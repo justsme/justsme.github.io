@@ -3,7 +3,6 @@ Thumbs.db
 db.json
 *.log
 node_modules/
-public/
 .deploy*/
 ### Node template
 # Logs
@@ -80,3 +79,5 @@ typings/
 # Serverless directories
 .serverless
 
+
+.idea/
