@@ -6,7 +6,7 @@ tags:
 > java8发布以来，带来了很多的新特性，其中`Optional`则旨在减少`NullPointException`，避免if条件的判空,提升了代码的美观度.然而2014年发布java8的很久之后，`mabatis`都没有很好的支持mapper中返回`Optional`。终于在`mybatis-3.5.0`(2019-01-21)中对该功能进行的支持！！！
 
 #### 一. mybatis-3.5.0
-1. [mybatis-3.5.0更新记录](https://github.com/mybatis/mybatis-3/releases) 
+1. [mybatis-3.5.0更新记录](https://github.com/mybatis/mybatis-3/releases)
 ```
 Enhancements:
 Support java.util.Optional as return type of mapper method. #799
