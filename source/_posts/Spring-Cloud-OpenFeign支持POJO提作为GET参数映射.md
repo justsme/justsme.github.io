@@ -2,6 +2,7 @@
 title: Spring Cloud OpenFeign支持POJO提作为GET参数映射
 date: 2019-04-23 11:35:27
 tags:
+toc: true
 ---
 > 当我们在SpringCloud项目中引入spring-cloud-starter-openfeign时，如果我们用Feign发送Get请求时，采用POJO对象传递参数，那么会可能会出现异常。那么如果你又不想用@RequestParam一个个参数写在调用方法内，有什么好的解决方案吗？
 
