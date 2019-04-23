@@ -11,8 +11,8 @@ gitment:
   client_secret: e6ba372b125f2566a99ff74269a8dd036c91fb52
 gitalk:
   enable: true
-  owner:  justsme
-  repo:  justsme.github.io
+  owner: justsme
+  repo: justsme.github.io
   client_id: c6c7353a792b500c8a2d
   client_secret: e6ba372b125f2566a99ff74269a8dd036c91fb52
   admin: ['justsme']
