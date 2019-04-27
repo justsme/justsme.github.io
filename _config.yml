@@ -86,6 +86,9 @@ feed:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: https://github.com/justsme/justsme.github.io.git
-  branch: master
+  - type: git
+    repo: https://github.com/justsme/justsme.github.io.git
+    branch: master
+  - type: git
+    repo: https://git.coding.net/shiv/shiv.coding.me.git
+    branch: master
