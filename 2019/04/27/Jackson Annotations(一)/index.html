@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content>
+  <meta name="author" content="Justshi">
+  <meta name="keywords" content>
+  <title>Jackson Annotations(一) ~ SHIV STEP</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 66vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SHIV STEP</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpeg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 2019-04-27日, 18:36:52
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      13 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <blockquote>
+<p>这周看了一篇<code>Jackson JSON Tutorial</code>，觉得很不错，自己也写代码运行学习了一下，做个记录。那个网站是个英文网站，文章结尾我附了地址，想看原版英文的同学可以自己进去学习。下面的内容就是记录其中的一些内容。我所用的Jackson版本为2.9.8。内容有点多，分两次记录。这篇主要介绍一些序列化注解和反序列化注解，了解他们的作用。下一篇再介绍Jackson Property Inclusion Annotations和一些更加普遍的注解。</p>
+</blockquote>
+<p>我是直接建了一个<code>springboot</code>项目，直接在里面写的测试。项目的pom.xml.</p>
+<pre><code class="xml">&lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.4.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+    &lt;/parent&gt;
+    &lt;groupId&gt;com.justme&lt;/groupId&gt;
+    &lt;artifactId&gt;jackson-demo&lt;/artifactId&gt;
+    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
+    &lt;name&gt;jackson-demo&lt;/name&gt;
+    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
+
+    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+    &lt;/properties&gt;
+
+    &lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-validation&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis.spring.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-spring-boot-starter&lt;/artifactId&gt;
+            &lt;version&gt;2.0.1&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+            &lt;artifactId&gt;h2&lt;/artifactId&gt;
+            &lt;scope&gt;runtime&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
+<p><code>jackson</code>的版本：</p>
+<pre><code class="bash">[INFO] +- org.springframework.boot:spring-boot-starter-web:jar:2.1.4.RELEASE:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter-json:jar:2.1.4.RELEASE:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.9.8:compile
+[INFO] |  |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.9.0:compile
+[INFO] |  |  |  \- com.fasterxml.jackson.core:jackson-core:jar:2.9.8:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jdk8:jar:2.9.8:compile
+[INFO] |  |  +- com.fasterxml.jackson.datatype:jackson-datatype-jsr310:jar:2.9.8:compile
+[INFO] |  |  \- com.fasterxml.jackson.module:jackson-module-parameter-names:jar:2.9.8:compile
+</code></pre>
+<h2 id="一-Jackson-Serialization-Annotations"><a href="#一-Jackson-Serialization-Annotations" class="headerlink" title="一. Jackson Serialization Annotations"></a>一. Jackson Serialization Annotations</h2><p>首先我们看一下序列化注解。</p>
+<h3 id="1-1-JsonAnyGetter"><a href="#1-1-JsonAnyGetter" class="headerlink" title="1.1 @JsonAnyGetter"></a>1.1 <code>@JsonAnyGetter</code></h3><p>该注解允许我们灵活的将<code>Map</code>的字段作为标准的属性，如下例子：</p>
+<pre><code class="java">@Getter
+@Setter
+public class Student {
+    private String name;
+    private Map&lt;String, String&gt; properties;
+
+    public Student() {
+        properties = new HashMap&lt;String, String&gt;();
+    }
+
+    @JsonAnyGetter
+    public Map&lt;String, String&gt; getProperties() {
+        return properties;
+    }
+
+    public void add(final String key, final String value) {
+        properties.put(key, value);
+    }
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void testSerializingUsingJsonAnyGetter() throws JsonProcessingException {
+        Student student = new Student();
+        student.setName(&quot;jack&quot;);
+
+        student.add(&quot;attr1&quot;, &quot;val1&quot;);
+        student.add(&quot;attr2&quot;, &quot;val2&quot;);
+
+        String result = new ObjectMapper().writeValueAsString(student);
+        System.out.println(result);
+    }
+</code></pre>
+<p>输出结果(经过格式化)：</p>
+<pre><code class="js">{
+    &quot;name&quot;:&quot;jack&quot;,
+    &quot;attr2&quot;:&quot;val2&quot;,
+    &quot;attr1&quot;:&quot;val1&quot;
+}
+</code></pre>
+<p>如果不加<code>@JsonAnySetter</code>,结果为：</p>
+<pre><code class="js">{
+    &quot;name&quot;:&quot;jack&quot;,
+    &quot;properties&quot;:{
+        &quot;attr2&quot;:&quot;val2&quot;,
+        &quot;attr1&quot;:&quot;val1&quot;
+    }
+}
+</code></pre>
+<h3 id="1-2-JsonGetter"><a href="#1-2-JsonGetter" class="headerlink" title="1.2 @JsonGetter"></a>1.2 <code>@JsonGetter</code></h3><p><code>@JsonGetter</code>可替代<code>@JsonProperty</code>标记一个方法作为<code>Getter</code>方法，如下：</p>
+<pre><code class="java">public class MyBean {
+    public int id;
+    private String name;
+
+    @JsonGetter(&quot;name&quot;)
+    public String getTheName() {
+        return name;
+    }
+
+    public MyBean(final int id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void whenSerializingUsingJsonGetter()
+            throws IOException {
+
+        MyBean bean = new MyBean(1, &quot;My bean&quot;);
+
+        String result = new ObjectMapper().writeValueAsString(bean);
+        System.out.println(result);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="js">{
+    &quot;id&quot;:1,
+    &quot;name&quot;:&quot;My bean&quot;
+}
+</code></pre>
+<h3 id="1-3-JsonPropertyOrder"><a href="#1-3-JsonPropertyOrder" class="headerlink" title="1.3 @JsonPropertyOrder"></a>1.3 <code>@JsonPropertyOrder</code></h3><p>该注解可以用来指定序列化时属性的顺序，如下：</p>
+<pre><code class="java">@JsonPropertyOrder({ &quot;name&quot;, &quot;id&quot; })
+public class MyBean {
+
+    public int id;
+    private String name;
+
+    @JsonGetter(&quot;name&quot;)
+    public String getTheName() {
+        return name;
+    }
+
+    public MyBean(final int id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void whenSerializingUsingJsonGetter()
+            throws IOException {
+
+        MyBean bean = new MyBean(1, &quot;My bean&quot;);
+
+        String result = new ObjectMapper().writeValueAsString(bean);
+        System.out.println(result);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="js">{
+    &quot;name&quot;:&quot;My bean&quot;,
+    &quot;id&quot;:1
+}
+</code></pre>
+<h3 id="1-4-JsonRawValue"><a href="#1-4-JsonRawValue" class="headerlink" title="1.4 @JsonRawValue"></a>1.4 <code>@JsonRawValue</code></h3><p>该注解可以让jackson准确的序列化一个属性。添加该注解的属性或者方法应按原样包含属性的文本字符串值进行序列化，而不引用字符。这对于在JSON中插入已序列化的值或将javascript函数定义从服务器传递到javascript client非常有用。如下，对比一下添加和不添加该注解序列化的情况：</p>
+<pre><code class="java">public class RawBean {
+
+    public String name;
+
+    @JsonRawValue
+    public String json;
+
+    public RawBean(final String name, final String json) {
+        this.name = name;
+        this.json = json;
+    }
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void whenSerializingUsingJsonRawValue()
+            throws JsonProcessingException {
+
+        RawBean bean = new RawBean(&quot;My bean&quot;, &quot;{\&quot;attr\&quot;:false}&quot;);
+
+        String result = new ObjectMapper().writeValueAsString(bean);
+        System.out.println(result);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="js">{
+    &quot;name&quot;:&quot;My bean&quot;,
+    &quot;json&quot;:{
+        &quot;attr&quot;:false
+    }
+}
+</code></pre>
+<p>不加注解的情况：</p>
+<pre><code class="js">{&quot;name&quot;:&quot;My bean&quot;,&quot;json&quot;:&quot;{\&quot;attr\&quot;:false}&quot;}
+</code></pre>
+<h3 id="1-5-JsonValue"><a href="#1-5-JsonValue" class="headerlink" title="1.5 @JsonValue"></a>1.5 <code>@JsonValue</code></h3><p>用以替代缺省的方法，由该方法来完成json的字符输出。例如，修改上面的<code>RawBean</code>,</p>
+<pre><code class="java">public class RawBean {
+
+    public String name;
+
+    @JsonRawValue
+    public String json;
+
+    public RawBean(final String name, final String json) {
+        this.name = name;
+        this.json = json;
+    }
+
+    @JsonValue
+    public String json() {
+        return &quot;JsonValue&quot;;
+    }
+}
+</code></pre>
+<p>输出结果为：</p>
+<pre><code>&quot;JsonValue&quot;
+</code></pre><h3 id="1-6-JsonRootName"><a href="#1-6-JsonRootName" class="headerlink" title="1.6 @JsonRootName"></a>1.6 <code>@JsonRootName</code></h3><p>直接对比一下效果：</p>
+<pre><code class="java">@JsonRootName(value = &quot;user&quot;)
+public class UserWithRoot {
+    public int id;
+    public String name;
+
+    public UserWithRoot(final int id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void whenSerializingUsingJsonRootName()
+            throws JsonProcessingException {
+
+        final UserWithRoot user = new UserWithRoot(1, &quot;John&quot;);
+        final ObjectMapper mapper = new ObjectMapper();
+        // 这个需要添加，否则@JsonRootName(value = &quot;user&quot;)不会起作用
+        mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
+
+        final String result = mapper.writeValueAsString(user);
+        System.out.println(result);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="js">{
+    &quot;user&quot;:{
+        &quot;id&quot;:1,
+        &quot;name&quot;:&quot;John&quot;
+    }
+}
+</code></pre>
+<p>不添加该注解,且注释掉 // mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);，则输出结果</p>
+<pre><code class="js">{
+    &quot;id&quot;:1,
+    &quot;name&quot;:&quot;John&quot;
+}
+</code></pre>
+<h3 id="1-7-JsonSerialize"><a href="#1-7-JsonSerialize" class="headerlink" title="1.7 @JsonSerialize"></a>1.7 <code>@JsonSerialize</code></h3><p>自定义序列化。</p>
+<pre><code class="java">@Getter
+@Setter
+public class Student {
+    private String name;
+
+    @JsonSerialize(using = CustomDateSerializer.class)
+    private Date birth;
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void whenSerializingUsingJsonSerialize() throws JsonProcessingException, ParseException {
+        Student student = new Student();
+        student.setName(&quot;shi&quot;);
+        student.setBirth(new Date());
+
+        String result = new ObjectMapper().writeValueAsString(student);
+        System.out.println(result);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="js">{&quot;name&quot;:&quot;shi&quot;,&quot;birth&quot;:&quot;2019-04-27 04:02:06&quot;}
+</code></pre>
+<p>不添加该注解：</p>
+<pre><code class="js">{&quot;name&quot;:&quot;shi&quot;,&quot;birth&quot;:1556351977873}
+</code></pre>
+<h2 id="二-Jackson-Deserialization-Annotations"><a href="#二-Jackson-Deserialization-Annotations" class="headerlink" title="二. Jackson Deserialization Annotations"></a>二. Jackson Deserialization Annotations</h2><h3 id="2-1-JsonCreator"><a href="#2-1-JsonCreator" class="headerlink" title="2.1 @JsonCreator"></a>2.1 <code>@JsonCreator</code></h3><p>我们可以使用@JsonCreator注释来调整反序列化中使用的构造函数/工厂,当我们需要反序列化一些与我们需要获得的目标实体不完全匹配的JSON时，它非常有用。当反序列化时，@JsonCreator注解的构造函数被会调用，如果没有@JsonCreator注解，则默认调用java类的无参构造函数，此时，如果java类中只有有参构造函数，而无默认的无参构造函数，在反序列化时会抛出异常，所以，当我们不使用@JsonCreator指定反序列化的构造函数，而又在java类中重载了构造函数时，一定要记得编写类的无参构造函数。</p>
+<pre><code class="java">@Getter
+@Setter
+public class User {
+
+    private String name;
+    private Integer age;
+
+    @JsonCreator
+    public User(@JsonProperty(&quot;username&quot;) String name) {
+        System.out.println(&quot;------&gt;&quot; + name);
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return &quot;User{&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, age=&quot; + age +
+                &#39;}&#39;;
+    }
+}
+</code></pre>
+<pre><code class="java"> @Test
+    public void whenDeserializingUsingJsonCreator() throws IOException {
+        final String json = &quot;{\&quot;age\&quot;:19,\&quot;username\&quot;:\&quot;json creater\&quot;}&quot;;
+
+        User user = new ObjectMapper().readerFor(User.class)
+                .readValue(json);
+
+        System.out.println(user);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code>------&gt;json creater=null
+User{name=&#39;json creater&#39;, age=19}
+</code></pre><p>从上面可以看出，当json字符串里的key和实体属性不完全匹配时，这种方案很有效。而且可以发现，利用这个注解我们也不必为实体添加无参构造器。</p>
+<p>我们稍微改一下实体类，也可以这么用：</p>
+<pre><code class="java">@Getter
+@Setter
+public class User {
+
+    private String name;
+
+    private Integer age;
+
+//    @JsonCreator
+//    public User(@JsonProperty(&quot;username&quot;) String name) {
+//        System.out.println(&quot;------&gt;&quot; + name);
+//        this.name = name;
+//    }
+    @JsonCreator
+    public User(Map map) {
+        System.out.println(&quot;------&gt;&quot; + map);
+    }
+
+    @Override
+    public String toString() {
+        return &quot;User{&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, age=&quot; + age +
+                &#39;}&#39;;
+    }
+}
+</code></pre>
+<p>输出结果：</p>
+<pre><code>------&gt;{age=19, username=json creater}
+User{name=&#39;null&#39;, age=null}
+</code></pre><h3 id="2-2-JacksonInject"><a href="#2-2-JacksonInject" class="headerlink" title="2.2 @JacksonInject"></a>2.2 <code>@JacksonInject</code></h3><p> 表示属性将从注入中获取其值，而不是从JSON数据中获取.</p>
+<pre><code class="java">public class BeanWithInject {
+    @JacksonInject
+    public int id;
+    public String name;
+
+    public BeanWithInject() {
+
+    }
+
+    public BeanWithInject(final int id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+</code></pre>
+<pre><code class="java"> @Test
+    public void whenDeserializingUsingJsonInject() throws IOException {
+        String json = &quot;{\&quot;name\&quot;:\&quot;My bean\&quot;}&quot;;
+        InjectableValues inject = new InjectableValues.Std().addValue(int.class, 1);
+
+        BeanWithInject bean = new ObjectMapper().reader(inject)
+                .forType(BeanWithInject.class)
+                .readValue(json);
+        assertEquals(&quot;My bean&quot;, bean.name);
+        assertEquals(1, bean.id);
+    }
+</code></pre>
+<p>上面的Test会success。</p>
+<h3 id="2-3-JsonAnySetter"><a href="#2-3-JsonAnySetter" class="headerlink" title="2.3 @JsonAnySetter"></a>2.3 <code>@JsonAnySetter</code></h3><p><code>@JsonAnySetter</code>允许我们灵活地使用Map作为标准属性。在反序列化时，JSON中的属性将简单地添加到地图中.</p>
+<pre><code class="java">@Getter
+@Setter
+public class Student {
+    private String name;
+    private Map&lt;String, String&gt; properties;
+
+    public Student() {
+        properties = new HashMap&lt;String, String&gt;();
+    }
+
+    @JsonAnyGetter
+    public Map&lt;String, String&gt; getProperties() {
+        return properties;
+    }
+
+    @JsonAnySetter
+    public void add(final String key, final String value) {
+        properties.put(key, value);
+    }
+
+    @Override
+    public String toString() {
+        return &quot;Student{&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, properties=&quot; + properties +
+                &#39;}&#39;;
+    }
+}
+</code></pre>
+<pre><code class="java"> @Test
+    public void whenDeserializingUsingJsonAnySetter() throws IOException {
+        String json = &quot;{\&quot;name\&quot;:\&quot;My bean\&quot;,\&quot;attr2\&quot;:\&quot;val2\&quot;,\&quot;attr1\&quot;:\&quot;val1\&quot;}&quot;;
+
+        Student student = new ObjectMapper().readerFor(Student.class)
+                .readValue(json);
+        System.out.println(student);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="java">Student{name=&#39;My bean&#39;, properties={attr2=val2, attr1=val1}}
+</code></pre>
+<h3 id="2-4-JsonSetter"><a href="#2-4-JsonSetter" class="headerlink" title="2.4 @JsonSetter"></a>2.4 <code>@JsonSetter</code></h3><p><code>@JsonSetter</code> 将该方法标记为setter方法。当我们需要读取一些JSON数据但目标实体类与该数据不完全匹配时，这非常有用，因此我们需要调整该过程以使其适合.在下面的示例中，我们将指定方法<code>setTheName()</code>作为MyBean实体中name属性的setter ：</p>
+<pre><code class="java">public class MyBean {
+    public int id;
+    private String name;
+
+    @JsonSetter(&quot;name&quot;)
+    public void setTheName(String name) {
+        this.name = name;
+    }
+}
+</code></pre>
+<pre><code class="java">@Test
+public void whenDeserializingUsingJsonSetter()
+  throws IOException {
+
+    String json = &quot;{\&quot;id\&quot;:1,\&quot;name\&quot;:\&quot;My bean\&quot;}&quot;;
+    MyBean bean = new ObjectMapper()
+      .readerFor(MyBean.class)
+      .readValue(json);
+    assertEquals(&quot;My bean&quot;, bean.getTheName());
+}
+</code></pre>
+<p>上面的Test会success。</p>
+<h3 id="2-5-JsonDeserialize"><a href="#2-5-JsonDeserialize" class="headerlink" title="2.5 @JsonDeserialize"></a>2.5 <code>@JsonDeserialize</code></h3><p>自定义反序列化器。</p>
+<pre><code class="java">@Getter
+@Setter
+public class Student {
+    private String name;
+
+    @JsonDeserialize(using = CustomDateDeserializer.class)
+    private Date birth;
+
+    @Override
+    public String toString() {
+        return &quot;Student{&quot; +
+                &quot;name=&#39;&quot; + name + &#39;\&#39;&#39; +
+                &quot;, birth=&quot; + birth +
+                &#39;}&#39;;
+    }
+}
+
+</code></pre>
+<pre><code class="java"> @Test
+    public void whenDeserializingUsingJsonDeserialize_thenCorrect()
+            throws IOException {
+
+        String json = &quot;{\&quot;name\&quot;: \&quot;shi\&quot;, \&quot;birth\&quot;: \&quot;2000-01-01 02:30:00\&quot;}&quot;;
+
+        Student student = new ObjectMapper()
+                .readerFor(Student.class)
+                .readValue(json);
+
+        System.out.println(student);
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code>Student{name=&#39;shi&#39;, birth=Sat Jan 01 02:30:00 CST 2000}
+</code></pre><h3 id="2-6-JsonAlias"><a href="#2-6-JsonAlias" class="headerlink" title="2.6 @JsonAlias"></a>2.6 <code>@JsonAlias</code></h3><p><code>@JsonAlias</code>定义反序列化过程为属性的一个或多个的替代名称.</p>
+<pre><code class="java">@Data
+public class AliasBean {
+    @JsonAlias({ &quot;fName&quot;, &quot;f_name&quot; })
+    private String firstName;
+
+    private String lastName;
+}
+</code></pre>
+<pre><code class="java">@Test
+    public void whenDeserializingUsingJsonAlias_thenCorrect() throws IOException {
+        String json = &quot;{\&quot;fName\&quot;: \&quot;John\&quot;, \&quot;lastName\&quot;: \&quot;Green\&quot;}&quot;;
+        AliasBean aliasBean = new ObjectMapper().readerFor(AliasBean.class).readValue(json);
+
+        System.out.println(aliasBean);
+        assertThat(aliasBean.getFirstName(), is(&quot;John&quot;));
+    }
+</code></pre>
+<p>输出结果：</p>
+<pre><code>AliasBean(firstName=John, lastName=Green)
+</code></pre><p><a href="https://www.baeldung.com/jackson-annotations" target="_blank" rel="noopener">参考:Jackson Annotation Examples</a></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/jackson">jackson</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/jackson">jackson</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="justsme/justsme.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  <script src="/js/post.js" ></script>
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+    <script>
+      $(document).ready(function () {
+        tocbot.init({
+          tocSelector: '#tocbot',
+          contentSelector: '.post-content',
+          headingSelector: 'h1,h2,h3,h4,h5,h6',
+          linkClass: 'tocbot-link',
+          activeLinkClass: 'tocbot-active-link',
+          listClass: 'tocbot-list',
+          isCollapsedClass: 'tocbot-is-collapsed',
+          collapsibleClass: 'tocbot-is-collapsible',
+          scrollSmooth: true,
+        });
+      });
+    </script>
+  
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Jackson Annotations(一)&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

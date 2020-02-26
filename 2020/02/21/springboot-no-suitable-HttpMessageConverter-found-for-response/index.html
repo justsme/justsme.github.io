@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content>
+  <meta name="author" content="Justshi">
+  <meta name="keywords" content>
+  <title>springboot: no suitable HttpMessageConverter found for response ~ SHIV STEP</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 66vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SHIV STEP</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpeg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期五, 2020-02-21日, 14:51:28
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    738 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      4 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <blockquote>
+<p>最近在使用<code>springboot</code>调用第三方接口的时候，出现了这个异常Could not extract response: no suitable HttpMessageConverter found for response type [cn.justme.sboot.entity.BaseResp&lt;java.lang.String&gt;] and content type [text/plain;charset=UTF-8],这里就来分析一下具体问题</p>
+</blockquote>
+<h3 id="事件还原"><a href="#事件还原" class="headerlink" title="事件还原"></a>事件还原</h3><h4 id="1-pom-xml"><a href="#1-pom-xml" class="headerlink" title="1. pom.xml"></a>1. pom.xml</h4><pre><code class="xml">&lt;parent&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+        &lt;version&gt;2.1.6.RELEASE&lt;/version&gt;
+        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
+&lt;/parent&gt;
+
+&lt;dependencies&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
+<h4 id="2-feign调用"><a href="#2-feign调用" class="headerlink" title="2. feign调用"></a>2. feign调用</h4><pre><code class="java">@FeignClient(name = &quot;test&quot;, url = &quot;http://localhost:8080&quot;)
+public interface TestClient {
+    @GetMapping(&quot;/api/test&quot;)
+    BaseResp&lt;String&gt; test();
+}
+</code></pre>
+<p>三方接口返回的是json，这里我是使用feign调用。</p>
+<h4 id="3-第三方接口"><a href="#3-第三方接口" class="headerlink" title="3. 第三方接口"></a>3. 第三方接口</h4><blockquote>
+<p>接口: <code>/api/test</code></p>
+<pre><code class="json">{
+    &quot;status&quot;: 0,
+    &quot;message&quot;: &quot;&quot;,
+    &quot;data&quot;: null
+}
+</code></pre>
+<p><img src="/2020/02/21/springboot-no-suitable-HttpMessageConverter-found-for-response/Xnip2020-02-21_15-00-38.jpg" srcset="/img/loading.gif" alt><br>我们可以看到<code>Content-Type: text/plain;charset=UTF-8</code>,</p>
+</blockquote>
+<h3 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h3><p>springboot默认的处理json的<code>HttpMessageConverter</code>为<code>MappingJackson2HttpMessageConverter</code>。</p>
+<pre><code class="java">public MappingJackson2HttpMessageConverter(ObjectMapper objectMapper) {
+    super(objectMapper, MediaType.APPLICATION_JSON, new MediaType(&quot;application&quot;, &quot;*+json&quot;));
+}
+</code></pre>
+<p>但是<code>MappingJackson2HttpMessageConverter</code>只支持<code>APPLICATION_JSON</code>类型,所以springboot没有找到合适的<code>HttpMessageConverter</code>,于是报出了上面的异常。</p>
+<p>feign默认的Decoder为<code>SpringDecoder</code>:</p>
+<pre><code class="java">public class SpringDecoder implements Decoder {
+
+    private ObjectFactory&lt;HttpMessageConverters&gt; messageConverters;
+
+    public SpringDecoder(ObjectFactory&lt;HttpMessageConverters&gt; messageConverters) {
+        this.messageConverters = messageConverters;
+    }
+}
+</code></pre>
+<p>我们看一下默认的<code>messageConverters</code><br><img src="/2020/02/21/springboot-no-suitable-HttpMessageConverter-found-for-response/Xnip2020-02-21_15-21-33.jpg" srcset="/img/loading.gif" alt></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><blockquote>
+<p>解决该问题，只要添加<code>MediaType.TEXT_PLAIN</code>类型的支持即可</p>
+</blockquote>
+<h4 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h4><blockquote>
+<p>仅仅在该<code>FeignClient</code>做<code>MediaType.TEXT_PLAIN</code>的支持，不影响其他的client。<br><code>`</code>java<br>@FeignClient(name = “test”, url = “<a href="http://localhost:8080&quot;" target="_blank" rel="noopener">http://localhost:8080&quot;</a>, configuration = TestClient.FeignTestConfiguration.class)<br>public interface TestClient {<br>    @GetMapping(“/api/test”)<br>    BaseResp<string> test();</string></p>
+</blockquote>
+<pre><code>class FeignTestConfiguration {
+    @Bean
+    public Decoder textPlainDecoder() {
+        return new SpringDecoder(() -&gt; new HttpMessageConverters(new CustomMappingJackson2HttpMessageConverter()));
+    }
+}
+
+class CustomMappingJackson2HttpMessageConverter extends MappingJackson2HttpMessageConverter {
+    @Override
+    public void setSupportedMediaTypes(List&lt;MediaType&gt; supportedMediaTypes) {
+        super.setSupportedMediaTypes(Collections.singletonList(MediaType.TEXT_PLAIN));
+    }
+}
+</code></pre><p>}</p>
+<pre><code>调用接口，查看该`FeignClient`的`Decoder`
+![](Xnip2020-02-21_15-29-34.jpg)
+此时调用成功。
+
+#### 方案二
+&gt; 全局修改，使所有的调用都支持`TEXT_PLAIN`的`Content-Type`
+```java
+@Configuration
+public class TestConfig {
+
+    @Bean
+    public MappingJackson2HttpMessageConverter customMappingJackson2HttpMessageConverter() {
+        return new CustomMappingJackson2HttpMessageConverter();
+    }
+
+    static class CustomMappingJackson2HttpMessageConverter extends MappingJackson2HttpMessageConverter {
+        public CustomMappingJackson2HttpMessageConverter() {
+            setSupportedMediaTypes(Collections.singletonList(MediaType.TEXT_PLAIN));
+        }
+    }
+}
+</code></pre><h4 id="方案三"><a href="#方案三" class="headerlink" title="方案三"></a>方案三</h4><p>我们也可以实现<code>WebMvcConfigurer</code>下面接口来实现对应功能。</p>
+<pre><code class="java">/**
+     * Configure the {@link HttpMessageConverter}s to use for reading or writing
+     * to the body of the request or response. If no converters are added, a
+     * default list of converters is registered.
+     * &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt; that adding converters to the list, turns off
+     * default converter registration. To simply add a converter without impacting
+     * default registration, consider using the method
+     * {@link #extendMessageConverters(java.util.List)} instead.
+     * @param converters initially an empty list of converters
+     */
+    default void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+    }
+
+    /**
+     * A hook for extending or modifying the list of converters after it has been
+     * configured. This may be useful for example to allow default converters to
+     * be registered and then insert a custom converter through this method.
+     * @param converters the list of configured converters to extend.
+     * @since 4.1.3
+     */
+    default void extendMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) {
+    }
+</code></pre>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="justsme/justsme.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  <script src="/js/post.js" ></script>
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+    <script>
+      $(document).ready(function () {
+        tocbot.init({
+          tocSelector: '#tocbot',
+          contentSelector: '.post-content',
+          headingSelector: 'h1,h2,h3,h4,h5,h6',
+          linkClass: 'tocbot-link',
+          activeLinkClass: 'tocbot-active-link',
+          listClass: 'tocbot-list',
+          isCollapsedClass: 'tocbot-is-collapsed',
+          collapsibleClass: 'tocbot-is-collapsible',
+          scrollSmooth: true,
+        });
+      });
+    </script>
+  
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "springboot: no suitable HttpMessageConverter found for response&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

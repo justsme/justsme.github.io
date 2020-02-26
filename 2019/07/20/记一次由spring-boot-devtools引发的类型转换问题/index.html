@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content>
+  <meta name="author" content="Justshi">
+  <meta name="keywords" content>
+  <title>记一次由spring-boot-devtools引发的类型转换问题 ~ SHIV STEP</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 66vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SHIV STEP</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpeg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 2019-07-20日, 00:28:35
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      3 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <blockquote>
+<p>在我们在用Springboot开发的时候，可能会引入spring-boot-devtools包，因为这个开发工具包提供了很多很好的供开发时使用的功能，比如提供一些默认的配置，自动重启，远程应用等。但是今天我就碰到了一个与它相关的问题，困扰了我不少时间。</p>
+</blockquote>
+<h3 id="一-简介"><a href="#一-简介" class="headerlink" title="一 简介"></a>一 简介</h3><p><code>spring-boot-devtools</code>为<code>Spring Boot</code>包含的一组额外的工具，可以使应用程序开发体验更加愉快。该<code>spring-boot-devtools</code>模块可以包含在任何项目中，以提供额外的开发期间功能。<code>Spring Boot</code>为了使开发者在开发时针对文件的修改能快速的生效，在<code>spring-boot-devtools</code>中就提供了一个自动重启的功能，只要类路径上的文件发生更改，就会自动重新启动应用程序。</p>
+<p>Spring Boot提供的重启技术使用两个类加载器。不更改的类（例如，来自第三方jar的类）将加载到基类加载器中。您正在积极开发的类将加载到RestartClassLoader加载器中。重新启动应用程序时，RestartClassLoader加载器会被丢弃并重新创建一个。这种方法意味着应用程序重新启动通常比“冷启动”快得多，因为<em>基本</em>类加载器加载的类已经可用。</p>
+<h3 id="二-问题"><a href="#二-问题" class="headerlink" title="二 问题"></a>二 问题</h3><p>我在使用dozer来进行bean的映射的时候，报出了一个<code>ClassCastException</code>异常。代码如下</p>
+<pre><code class="java">Mapper mapper = DozerBeanMapperBuilder.create()
+  .withMappingBuilder(new BeanMappingBuilder() {
+    @Override
+    protected void configure() {
+      mapping(type(ZxCreditReportDTO.class), type(CreditInfoDetailDTO.class)
+             ).fields(field(&quot;username&quot;), field(&quot;name&quot;));
+    }
+  }).build();
+
+CreditInfoDetailDTO map = mapper.map(creditReportDTO, CreditInfoDetailDTO.class);
+</code></pre>
+<p>首先这段代码在Main函数或者在单元测试类运行良好，但是当我启动springboot通过http接口去调用这段代码却出现如下错误：</p>
+<p><img src="/2019/07/20/记一次由spring-boot-devtools引发的类型转换问题/1.jpg" srcset="/img/loading.gif" alt="ClassCastException"></p>
+<p>这里奇怪的就是居然出现类同一个类<code>CreditInfoDetailDTO</code>转换的异常，相同的类为什么会出现类型转换异常呢？于是就出现两个疑问，一，为什么用Main函数或者Junit单元测试没有出现问题？二，什么同一个类会出现类型转换异常？</p>
+<h3 id="三-原因"><a href="#三-原因" class="headerlink" title="三 原因"></a>三 原因</h3><p>其实原因就是启动Springboot调接口与Main函数测试使用的类加载器是有差别的。使用Main函数的时候<code>CreditInfoDetailDTO</code>类都是由AppClassLoader加载器加载的。而springboot由于添加了spring-boot-devtools依赖，会有所不同。上面有这么一段代码：</p>
+<pre><code class="java"> mapping(type(ZxCreditReportDTO.class), type(CreditInfoDetailDTO.class)
+             ).fields(field(&quot;username&quot;), field(&quot;name&quot;));
+</code></pre>
+<p>进入这段代码内部，会调用MappingUtils的loadClass(String name, BeanContainer beanContainer)去加载指定的mapping类。</p>
+<p>代码如下：</p>
+<pre><code class="java">public static Class&lt;?&gt; loadClass(String name, BeanContainer beanContainer) {
+  DozerClassLoader loader = beanContainer.getClassLoader();
+  return loader.loadClass(name);
+}
+</code></pre>
+<p>继续查看<code>beanContainer.getClassLoader()</code></p>
+<pre><code class="java">public class BeanContainer {
+
+      // 这一段
+    DozerClassLoader classLoader = new DefaultClassLoader(getClass().getClassLoader());
+    public DozerClassLoader getClassLoader() {
+        return classLoader;
+    }
+  ...
+</code></pre>
+<p>这里Dozer默认使用的加载器为DefaultClassLoader，而DefaultClassLoader内部有一个ClassLoader属性，这个属性值就是上面的<code>getClass().getClassLoader()</code>。由此可以知道加载CreditInfoDetailDTO的加载器与加载BeanContainer类的加载器是同一个都是AppClassLoader，由于spring-boot-devtools的作用，<code>CreditInfoDetailDTO map = mapper.map(creditReportDTO, CreditInfoDetailDTO.class);</code>左侧的CreditInfoDetailDTO是由RestartClassLoader加载的，所以是由于不同的类加载器加载从而导致类型转换异常。</p>
+<h3 id="四-解决方案"><a href="#四-解决方案" class="headerlink" title="四 解决方案"></a>四 解决方案</h3><h4 id="1-不使用spring-boot-devtools"><a href="#1-不使用spring-boot-devtools" class="headerlink" title="1 不使用spring-boot-devtools"></a>1 不使用spring-boot-devtools</h4><h4 id="2-使用spring-devtools-properties"><a href="#2-使用spring-devtools-properties" class="headerlink" title="2 使用spring-devtools.properties"></a>2 使用spring-devtools.properties</h4><p>在reources目录下新建META-INF文件夹，再在META-INF下新建spring-devtools.properties，如下：</p>
+<pre><code class="properties"># 支持正则
+restart.include.dozer=/dozer-[\\w\\d-\.]+\.jar
+</code></pre>
+<p>更多配置信息参考<a href="https://docs.spring.io/spring-boot/docs/2.1.6.RELEASE/reference/html/using-boot-devtools.html#using-boot-devtools-customizing-classload" target="_blank" rel="noopener">官方文档</a></p>
+<p>这个配置就是dozer-[\w\d-.]+.jar里的类也使用RestartClassLoader加载器加载，这样就不会出现类型转换问题了。</p>
+<blockquote>
+<p> <em>注意：当然其实在生产环境我们是不建议使用spring-boot-devtools的。在运行完全打包的应用程序时会自动禁用，如果您的应用程序是从<code>java -jar</code>特殊的类加载器启动或启动的，那么它将被视为“生产应用程序”。如果这不适用（即，如果您从容器运行应用程序），请考虑排除devtools或设置<code>-Dspring.devtools.restart.enabled=false</code>系统属性。</em></p>
+</blockquote>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="justsme/justsme.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  <script src="/js/post.js" ></script>
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+    <script>
+      $(document).ready(function () {
+        tocbot.init({
+          tocSelector: '#tocbot',
+          contentSelector: '.post-content',
+          headingSelector: 'h1,h2,h3,h4,h5,h6',
+          linkClass: 'tocbot-link',
+          activeLinkClass: 'tocbot-active-link',
+          listClass: 'tocbot-list',
+          isCollapsedClass: 'tocbot-is-collapsed',
+          collapsibleClass: 'tocbot-is-collapsible',
+          scrollSmooth: true,
+        });
+      });
+    </script>
+  
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "记一次由spring-boot-devtools引发的类型转换问题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

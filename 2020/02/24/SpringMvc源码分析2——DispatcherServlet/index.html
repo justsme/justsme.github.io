@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="description" content>
+  <meta name="author" content="Justshi">
+  <meta name="keywords" content>
+  <title>SpringMvc源码分析2——DispatcherServlet ~ SHIV STEP</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css">
+
+
+</head>
+
+
+<body>
+  <header style="height: 66vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>SHIV STEP</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">首页</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">归档</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">分类</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">标签</a>
+          </li>
+        
+          
+          
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">关于</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" false
+         style="background: url('/img/default.jpeg')no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 2020-02-24日, 16:29:47
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    1.2k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      6 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <blockquote>
+<p>从SpringMvc的中心处理器<code>DispatcherServlet</code>开始说起。源码主要是基于<code>jdk1.8</code>,<code>springboot 2.1.6.RELEASE</code>,添加一个<code>spring-boot-starter-web</code>依赖。</p>
+</blockquote>
+<h3 id="一-DispatcherServlet结构图"><a href="#一-DispatcherServlet结构图" class="headerlink" title="一. DispatcherServlet结构图"></a>一. DispatcherServlet结构图</h3><p><img src="/2020/02/24/SpringMvc源码分析2——DispatcherServlet/DispatcherServlet.png" srcset="/img/loading.gif" alt="DispatcherServlet"></p>
+<h3 id="二-测试代码"><a href="#二-测试代码" class="headerlink" title="二. 测试代码"></a>二. 测试代码</h3><blockquote>
+<p>首先我们先暴露一个接口</p>
+</blockquote>
+<pre><code>@RestController
+public class IndexController {
+    @GetMapping(&quot;/hello&quot;)
+    public String hello(String name) {
+        return &quot;hello: &quot; + name;
+    }
+}
+</code></pre><p>调用<code>http://localhost:8080/hello</code>:</p>
+<h4 id="1-调用链"><a href="#1-调用链" class="headerlink" title="1. 调用链"></a>1. 调用链</h4><p>Debug一下: 查看一下调用链，如下：</p>
+<p><img src="/2020/02/24/SpringMvc源码分析2——DispatcherServlet/Xnip2020-02-24_15-02-06.jpg" srcset="/img/loading.gif" alt="Xnip2020-02-24_15-02-06"></p>
+<pre><code class="java">  1. HttpServlet
+  public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException
+
+  2. FrameworkServlet
+  protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+
+  3. HttpServlet
+  protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+
+  4. FrameworkServlet
+  protected final void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+
+  5. DispatcherServlet
+  protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception
+
+  6. DispatcherServlet
+  protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception
+</code></pre>
+<p>我们查看一下具体的代码，</p>
+<h4 id="2-FrameworkServlet-processRequest"><a href="#2-FrameworkServlet-processRequest" class="headerlink" title="2. FrameworkServlet#processRequest"></a>2. <code>FrameworkServlet#processRequest</code></h4><blockquote>
+<p>代码进行了一些删减</p>
+</blockquote>
+<pre><code class="java">/**
+ * 处理此请求，不考虑结果而发布事件,实际事件处理由抽象执行
+ */
+protected final void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+  LocaleContext previousLocaleContext = LocaleContextHolder.getLocaleContext();
+        LocaleContext localeContext = buildLocaleContext(request);
+
+        RequestAttributes previousAttributes = RequestContextHolder.getRequestAttributes();
+        ServletRequestAttributes requestAttributes = buildRequestAttributes(request, response, previousAttributes);
+
+        WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
+        asyncManager.registerCallableInterceptor(FrameworkServlet.class.getName(), new RequestBindingInterceptor());
+
+      // 设置了LocaleContextHolder和RequestContextHolder，使用ThreadLocal保存，所以在之后可以直接通过LocaleContextHolder，RequestContextHolder获取相关信息
+        initContextHolders(request, localeContext, requestAttributes);
+
+        try {
+      // todo下面分析
+            doService(request, response);
+        } catch (ServletException | IOException ex) {
+            failureCause = ex;
+            throw ex;
+        }
+        catch (Throwable ex) {
+            failureCause = ex;
+            throw new NestedServletException(&quot;Request processing failed&quot;, ex);
+        }
+
+        finally {
+      // 重置LocaleContextHolder和RequestContextHolder
+            resetContextHolders(request, previousLocaleContext, previousAttributes);
+            if (requestAttributes != null) {
+                requestAttributes.requestCompleted();
+            }
+            logResult(request, response, failureCause, asyncManager);
+      // 发布相关事件
+            publishRequestHandledEvent(request, response, startTime, failureCause);
+        }
+    }
+</code></pre>
+<p>前一部分是将当前请求的Locale对象和请求的属性，通过<code>LocaleContextHolder</code>和<code>RequestContextHolder</code>设置到<code>ThreadLocal</code>对象中，也就是分别将这两个对象和请求线程做了绑定。之后我们就可以从里面获取这些绑定的值使用。调用<code>doService()</code>处理结束后，再通过<code>LocaleContextHolder</code>和<code>RequestContextHolder</code>恢复相应的绑定。接着发布了一个<code>ServletRequestHandledEvent</code>事件。具体我们再看<code>doService()</code>方法。</p>
+<h4 id="3-DispatcherServlet-doService"><a href="#3-DispatcherServlet-doService" class="headerlink" title="3. DispatcherServlet#doService"></a>3. <code>DispatcherServlet#doService</code></h4><pre><code class="java">protected void doService(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        logRequest(request);
+
+        // Keep a snapshot of the request attributes in case of an include,
+        // to be able to restore the original attributes after the include.
+        Map&lt;String, Object&gt; attributesSnapshot = null;
+        if (WebUtils.isIncludeRequest(request)) {
+            attributesSnapshot = new HashMap&lt;&gt;();
+            Enumeration&lt;?&gt; attrNames = request.getAttributeNames();
+            while (attrNames.hasMoreElements()) {
+                String attrName = (String) attrNames.nextElement();
+                if (this.cleanupAfterInclude || attrName.startsWith(DEFAULT_STRATEGIES_PREFIX)) {
+                    attributesSnapshot.put(attrName, request.getAttribute(attrName));
+                }
+            }
+        }
+
+        // Make framework objects available to handlers and view objects.
+      // 给request设置一些属性
+        request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext());
+        request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, this.localeResolver);
+        request.setAttribute(THEME_RESOLVER_ATTRIBUTE, this.themeResolver);
+        request.setAttribute(THEME_SOURCE_ATTRIBUTE, getThemeSource());
+
+        if (this.flashMapManager != null) {
+            FlashMap inputFlashMap = this.flashMapManager.retrieveAndUpdate(request, response);
+            if (inputFlashMap != null) {
+                request.setAttribute(INPUT_FLASH_MAP_ATTRIBUTE, Collections.unmodifiableMap(inputFlashMap));
+            }
+            request.setAttribute(OUTPUT_FLASH_MAP_ATTRIBUTE, new FlashMap());
+            request.setAttribute(FLASH_MAP_MANAGER_ATTRIBUTE, this.flashMapManager);
+        }
+
+        try {
+            doDispatch(request, response);
+        }
+        finally {
+            if (!WebAsyncUtils.getAsyncManager(request).isConcurrentHandlingStarted()) {
+                // Restore the original attribute snapshot, in case of an include.
+                if (attributesSnapshot != null) {
+                    restoreAttributesAfterInclude(request, attributesSnapshot);
+                }
+            }
+        }
+    }
+</code></pre>
+<p>这里面有几个<code>requet.setAttribute()</code>方法的调用，将之前在初始化流程中实例化的对象设置到<code>request</code>的属性中，供下一步处理使用，这里有web上下文，本地化解析器等。然后继续调用<code>doDispatch()</code>处理请求。</p>
+<h4 id="4-DispatcherServlet-doDispatch"><a href="#4-DispatcherServlet-doDispatch" class="headerlink" title="4. DispatcherServlet#doDispatch"></a>4. <code>DispatcherServlet#doDispatch</code></h4><pre><code class="java">protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        HttpServletRequest processedRequest = request;
+        HandlerExecutionChain mappedHandler = null;
+        boolean multipartRequestParsed = false;
+
+        WebAsyncManager asyncManager = WebAsyncUtils.getAsyncManager(request);
+
+        try {
+            ModelAndView mv = null;
+            Exception dispatchException = null;
+
+            try {
+                processedRequest = checkMultipart(request);
+                multipartRequestParsed = (processedRequest != request);
+
+                // Determine handler for the current request.
+        // 根据当前请求获取HandlerMapping，并得到HandlerExecutionChain
+                mappedHandler = getHandler(processedRequest);
+                if (mappedHandler == null) {
+                    noHandlerFound(processedRequest, response);
+                    return;
+                }
+
+                // Determine handler adapter for the current request.
+        // 获取匹配的HandlerAdapter
+                HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
+
+                // Process last-modified header, if supported by the handler.
+                String method = request.getMethod();
+                boolean isGet = &quot;GET&quot;.equals(method);
+                if (isGet || &quot;HEAD&quot;.equals(method)) {
+                    long lastModified = ha.getLastModified(request, mappedHandler.getHandler());
+                    if (new ServletWebRequest(request, response).checkNotModified(lastModified) &amp;&amp; isGet) {
+                        return;
+                    }
+                }
+
+        // 执行拦截器的 preHandle()方法
+                if (!mappedHandler.applyPreHandle(processedRequest, response)) {
+                    return;
+                }
+
+                // Actually invoke the handler.
+        // 调用handler，得到ModelAndView
+                mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
+
+                if (asyncManager.isConcurrentHandlingStarted()) {
+                    return;
+                }
+
+                applyDefaultViewName(processedRequest, mv);
+        // 执行拦截器的 postHandle()方法
+                mappedHandler.applyPostHandle(processedRequest, response, mv);
+            }
+            catch (Exception ex) {
+                dispatchException = ex;
+            }
+            catch (Throwable err) {
+                // As of 4.3, we&#39;re processing Errors thrown from handler methods as well,
+                // making them available for @ExceptionHandler methods and other scenarios.
+                dispatchException = new NestedServletException(&quot;Handler dispatch failed&quot;, err);
+            }
+      // 处理ModelAndView,最后再执行拦截器的 afterCompletion()方法
+            processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
+        }
+        catch (Exception ex) {
+      // 异常，执行拦截器的 afterCompletion()方法
+            triggerAfterCompletion(processedRequest, response, mappedHandler, ex);
+        }
+        catch (Throwable err) {
+      // 异常，执行拦截器的 afterCompletion()方法
+            triggerAfterCompletion(processedRequest, response, mappedHandler,
+                    new NestedServletException(&quot;Handler processing failed&quot;, err));
+        }
+        finally {
+            if (asyncManager.isConcurrentHandlingStarted()) {
+                // Instead of postHandle and afterCompletion
+                if (mappedHandler != null) {
+                    mappedHandler.applyAfterConcurrentHandlingStarted(processedRequest, response);
+                }
+            }
+            else {
+                // Clean up any resources used by a multipart request.
+                if (multipartRequestParsed) {
+                    cleanupMultipart(processedRequest);
+                }
+            }
+        }
+    }
+</code></pre>
+<p>到此终于找了处理流程的主线，我们看到了一系列<a href="/2020/02/24/SpringMvc源码分析1/" title="SpringMvc源码分析1">SpringMvc源码分析1</a> 中介绍的对象，以及处理流程。</p>
+<p>这里会从<code>DispatcherServlet</code>内维护的<code>handlerMappings</code>中找到匹配的<code>HandlerMapping</code>方法，并执行其<code>getHandler()</code>方法，得到<code>HandlerExecutionChain</code>,看一下具体的内部结构：</p>
+<p><img src="/2020/02/24/SpringMvc源码分析2——DispatcherServlet/HandlerExecutionChain.png" srcset="/img/loading.gif" alt="HandlerExecutionChain.png"></p>
+<p>可以看到维护了<code>handler</code>和拦截器列表。</p>
+<p>接着<code>HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());</code>得到<code>HandlerAdapter</code>，然后执行拦截器的<code>postHandle()</code>方法。之后调用<code>HandlerAdapter</code>的<code>handle()</code>,处理<code>controller</code>里面的逻辑，得到<code>ModelAndView</code>,接着执行拦截器的<code>postHandle()</code>方法。然后就会根据<code>viewResolvers</code>得到具体的视图<code>View</code>，最后就是渲染视图，返回给客户端。</p>
+<h3 id="三-总结"><a href="#三-总结" class="headerlink" title="三. 总结"></a>三. 总结</h3><p>到此，我们可以了解<code>DispatcherServlet</code>大概的处理流程。其中</p>
+<p><code>mv = ha.handle(processedRequest, response, mappedHandler.getHandler());</code>还有很多的处理逻辑，包括<code>HandlerMethodArgumentResolver</code>,<code>HandlerMethodReturnValueHandler</code>,<code>HttpMessageConverter</code>等的处理，我们后面继续分析。</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+              <span>
+                <i class="iconfont icon-inbox"></i>
+                
+                  <a class="hover-with-bg" href="/categories/SpringMvc">SpringMvc</a>
+                  &nbsp;
+                
+              </span>&nbsp;&nbsp;
+            
+            
+              <span>
+                <i class="iconfont icon-tag"></i>
+                
+                  <a class="hover-with-bg" href="/tags/SpringMvc">SpringMvc</a>
+                
+              </span>
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" rel="nofollow noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h5"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+      <br><br>
+      
+      
+  <script defer src="https://utteranc.es/client.js"
+          repo="justsme/justsme.github.io"
+          issue-term="pathname"
+  
+          label="utterances"
+    
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv"></span>总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv"></span>总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人&nbsp;
+  
+  <br>
+
+
+
+    
+
+
+    <!-- cnzz Analytics icon -->
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  <script src="/js/post.js" ></script>
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+    <script>
+      $(document).ready(function () {
+        tocbot.init({
+          tocSelector: '#tocbot',
+          contentSelector: '.post-content',
+          headingSelector: 'h1,h2,h3,h4,h5,h6',
+          linkClass: 'tocbot-link',
+          activeLinkClass: 'tocbot-active-link',
+          listClass: 'tocbot-list',
+          isCollapsedClass: 'tocbot-is-collapsed',
+          collapsibleClass: 'tocbot-is-collapsible',
+          scrollSmooth: true,
+        });
+      });
+    </script>
+  
+
+
+
+  <script src="/lib/smoothscroll/SmoothScroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "SpringMvc源码分析2——DispatcherServlet&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
