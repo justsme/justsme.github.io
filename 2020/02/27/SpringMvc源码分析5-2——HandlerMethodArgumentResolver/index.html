@@ -15,7 +15,7 @@
   <meta name="description" content>
   <meta name="author" content="Justshi">
   <meta name="keywords" content>
-  <title>SpringMvc源码分析5.2——HandlerMethodArgumentResolver.md ~ SHIV STEP</title>
+  <title>SpringMvc源码分析5.2——HandlerMethodArgumentResolver ~ SHIV STEP</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
@@ -171,7 +171,7 @@
             <blockquote>
 <p>接着上一篇，我们来探究一下<code>RequestResponseBodyMethodProcessor</code>。</p>
 </blockquote>
-<h3 id="一-类实现图"><a href="#一-类实现图" class="headerlink" title="一. 类实现图"></a>一. 类实现图</h3><p><img src="/2020/02/27/SpringMvc源码分析5-2——HandlerMethodArgumentResolver-md/AbstractMessageConverterMethodArgumentResolver.png" srcset="/img/loading.gif" alt="AbstractMessageConverterMethodArgumentResolver"></p>
+<h3 id="一-类实现图"><a href="#一-类实现图" class="headerlink" title="一. 类实现图"></a>一. 类实现图</h3><p><img src="/2020/02/27/SpringMvc源码分析5-2——HandlerMethodArgumentResolver/AbstractMessageConverterMethodArgumentResolver.png" srcset="/img/loading.gif" alt="AbstractMessageConverterMethodArgumentResolver"></p>
 <p>回顾一下<code>HandlerMethodArgumentResolver</code>的两个方法：</p>
 <pre><code>public interface HandlerMethodArgumentResolver {
    boolean supportsParameter(MethodParameter parameter);
@@ -333,7 +333,7 @@ public String test(@RequestBody User user) {
 <p>利用<code>curl</code>命令请求：</p>
 <pre><code>curl -H &quot;Content-Type:application/json&quot; -X POST --data &#39;{&quot;username&quot;:&quot;jack&quot;}&#39; http://localhost:8080/test
 </code></pre><p>可以看到这两个关键对象的值。</p>
-<p><img src="/2020/02/27/SpringMvc源码分析5-2——HandlerMethodArgumentResolver-md/Xnip2020-02-27_16-13-35.jpg" srcset="/img/loading.gif" alt="Xnip2020-02-27_16-13-35"></p>
+<p><img src="/2020/02/27/SpringMvc源码分析5-2——HandlerMethodArgumentResolver/Xnip2020-02-27_16-13-35.jpg" srcset="/img/loading.gif" alt="Xnip2020-02-27_16-13-35"></p>
 <p>我们继续debug，可以发现处理我们<code>/test</code>请求的<code>HttpMessageConverter</code>为<code>MappingJackson2HttpMessageConverter</code>，是利用<code>jackson</code>来将我们的<code>json</code>串转为<code>User</code>对象的。</p>
 <p>在这里这个<code>advice</code>类并没有起到作用，因为没有找到匹配的<code>RequestBodyAdvice</code>。截图里面的<code>JsonViewRequestBodyAdvice</code>需要参数上带有<code>@JsonView</code>注解才能处理。</p>
 <blockquote>
@@ -353,7 +353,7 @@ public class RequestBodyAdviceExample extends RequestBodyAdviceAdapter {
 }
 </code></pre>
 <p>此时，再次debug查看，可以看到我们自定义的<code>advice</code>已经注入。</p>
-<p><img src="/2020/02/27/SpringMvc源码分析5-2——HandlerMethodArgumentResolver-md/Xnip2020-02-27_17-12-34.jpg" srcset="/img/loading.gif" alt="Xnip2020-02-27_17-12-34"></p>
+<p><img src="/2020/02/27/SpringMvc源码分析5-2——HandlerMethodArgumentResolver/Xnip2020-02-27_17-12-34.jpg" srcset="/img/loading.gif" alt="Xnip2020-02-27_17-12-34"></p>
 <h3 id="三-总结"><a href="#三-总结" class="headerlink" title="三. 总结"></a>三. 总结</h3><ol>
 <li>主要讲解了一下<code>AbstractMessageConverterMethodArgumentResolver</code>类型的参数解析器,从请求体里面获取消息并转换；</li>
 <li><code>AbstractMessageConverterMethodArgumentResolver</code>会利用<code>HttpMessageConverter</code>去转换<code>http</code>消息体里面的消息；</li>
@@ -553,7 +553,7 @@ public class RequestBodyAdviceExample extends RequestBodyAdviceAdapter {
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "SpringMvc源码分析5.2——HandlerMethodArgumentResolver.md&nbsp;",
+        "SpringMvc源码分析5.2——HandlerMethodArgumentResolver&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
