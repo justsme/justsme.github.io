@@ -137,6 +137,39 @@
     
     
     <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2019/06/01/用TaskDecorator复制MDC数据到-Async线程/">
+        <p class="h4 index-header">用TaskDecorator复制MDC数据到@Async线程</p>
+      </a>
+
+      <a href="/2019/06/01/用TaskDecorator复制MDC数据到-Async线程/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+这主要涉及父子线程传值的问题，以及当配置@Async应用线程池时，如果得到MDC数据。参考原文
+
+这篇博文主要展示如何从web线程里复制MDC数据到@Async注解的线程里，我们将会使用一个全新的 Spring Framework 4.3的特性: ThreadPoolTaskExecutor#setTaskDecorator() [set-task-decorator]. 如下图：
+
+注意到倒数第一行和第三行：在这个log级别上输出了[随机数]，倒数第三行是在一个web线程里发出的，倒数第一行是在一个用了@Async注解的异步线程里发出的。本质上，MDC数据从web线程中复制到了使用@Asy</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-06-01&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a href="/2019/05/24/便捷的浏览GitHub代码——Chrome插件Octotree/">
         <p class="h4 index-header">便捷的浏览GitHub代码——Chrome插件Octotree</p>
       </a>
@@ -288,9 +321,9 @@ List&lt;Integer&gt; collect = Stream.of(0, 1, 2, 3, 4, 10, 11)
         
           <i class="iconfont icon-tag"></i>
           
-            <a href="/tags/java8">java8</a>&nbsp;
-          
             <a href="/tags/IntelliJ%20IDEA">IntelliJ IDEA</a>&nbsp;
+          
+            <a href="/tags/java8">java8</a>&nbsp;
           
             <a href="/tags/java%20stream">java stream</a>&nbsp;
           
@@ -511,45 +544,6 @@ public class BeanWithIgnore {
           <i class="iconfont icon-tag"></i>
           
             <a href="/tags/jackson">jackson</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2019/04/27/JOOQ——The easiest way to write SQL in Java/">
-        <p class="h4 index-header">JOOQ——The easiest way to write SQL in Java</p>
-      </a>
-
-      <a href="/2019/04/27/JOOQ——The easiest way to write SQL in Java/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-最近在看springboot官方文档的时候，在数据库连接章节看到了JOOQ，于是了解了一下。
-
-一. 什么是JOOQJOOQ（Java Object Oriented Querying ）是Data Geekery的一个流行产品，它从数据库中生成Java代码，并允许您通过它的fluent API构建类型安全的SQL查询。JOOQ 既吸取了传统ORM操作数据的简单性和安全性，又保留了原生sql的灵活性，它更像是介于 ORMS和JDBC的中间层。
-官网上说使用jOOQ DSL, SQL看起来几乎是由Java本地支持的，那么就直接看那看看例子吧：
-sql:
-SELECT AUTHOR.FIRST_</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-04-27&nbsp;&nbsp;
-        
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/JOOQ">JOOQ</a>&nbsp;
           
         
       </div>
