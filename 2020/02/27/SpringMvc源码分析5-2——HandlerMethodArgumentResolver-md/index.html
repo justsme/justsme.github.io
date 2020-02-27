@@ -337,7 +337,7 @@ public String test(@RequestBody User user) {
 <p>我们继续debug，可以发现处理我们<code>/test</code>请求的<code>HttpMessageConverter</code>为<code>MappingJackson2HttpMessageConverter</code>，是利用<code>jackson</code>来将我们的<code>json</code>串转为<code>User</code>对象的。</p>
 <p>在这里这个<code>advice</code>类并没有起到作用，因为没有找到匹配的<code>RequestBodyAdvice</code>。截图里面的<code>JsonViewRequestBodyAdvice</code>需要参数上带有<code>@JsonView</code>注解才能处理。</p>
 <blockquote>
-<p><code>@JsonView</code>是<code>jackson</code>提供的一个注解，作用是可以按需过滤对象属性。其实我们可以参考<code>JsonViewRequestBodyAdvice</code>来实现一些功能，比如：某个参数乃至整个请求体的加解密，使我们避免重复的样板代码。</p>
+<p><code>@JsonView</code>是<code>jackson</code>提供的一个注解，作用是可以按需过滤对象属性，可以参考<a href="/2019/05/05/Jackson Annotations(二)/" title="Jackson Annotations(二)">Jackson Annotations(二)</a>。其实我们可以参考<code>JsonViewRequestBodyAdvice</code>来实现一些功能，比如：某个参数乃至整个请求体的加解密，使我们避免重复的样板代码。</p>
 </blockquote>
 <p>如果我们想要在消息转换前后实现自己的<code>advice</code>逻辑，我们可以在<code>springboot</code>如下实现：</p>
 <pre><code class="java">// 1. 标注注解 2. 继承RequestBodyAdviceAdapter或者RequestBodyAdvice
