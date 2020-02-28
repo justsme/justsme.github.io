@@ -137,6 +137,42 @@
     
     
     <div class="col-12 col-md-8 mx-auto index-info">
+      <a href="/2019/06/01/idea中解决maven包冲突的问题/">
+        <p class="h4 index-header">idea中解决maven包冲突的问题</p>
+      </a>
+
+      <a href="/2019/06/01/idea中解决maven包冲突的问题/">
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">
+在我们使用maven进行jar包管理的时候，因为jar包传递依赖，可能会导致相同jar包的不同版本被依赖，由于包管理的依赖优先级会导致最终实际引入的jar包不是你最终需要的版本，由此可能出现类找不到的情况。针对这种jar包冲突的问题，可以依赖idea来很好的解决。
+
+这边展示两种解决问题的方法，一种利用idea自带的show dependencies,另一种是maven helper插件。
+一 show dependencies打开pom.xml文件，如下图操作：
+
+选择show dependencies,则会展示项目的jar包依赖图：
+
+看图中出现的红线，则表明出现了jar包冲突（依赖太多</div>
+        </div>
+      </a>
+
+      <div class="index-btm">
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2019-06-01&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <div class="col-12 col-md-8 mx-auto index-info">
       <a href="/2019/06/01/用TaskDecorator复制MDC数据到-Async线程/">
         <p class="h4 index-header">用TaskDecorator复制MDC数据到@Async线程</p>
       </a>
@@ -490,49 +526,6 @@ public class BeanWithIgnore {
       <div class="index-btm">
         
           <i class="iconfont icon-riqi2"></i>&nbsp;2019-05-05&nbsp;&nbsp;
-        
-        
-          <i class="iconfont icon-inbox"></i>
-          
-            <a href="/categories/jackson">jackson</a>&nbsp;
-          &nbsp;
-        
-        
-          <i class="iconfont icon-tag"></i>
-          
-            <a href="/tags/jackson">jackson</a>&nbsp;
-          
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <div class="col-12 col-md-8 mx-auto index-info">
-      <a href="/2019/04/27/Jackson Annotations(一)/">
-        <p class="h4 index-header">Jackson Annotations(一)</p>
-      </a>
-
-      <a href="/2019/04/27/Jackson Annotations(一)/">
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-这周看了一篇Jackson JSON Tutorial，觉得很不错，自己也写代码运行学习了一下，做个记录。那个网站是个英文网站，文章结尾我附了地址，想看原版英文的同学可以自己进去学习。下面的内容就是记录其中的一些内容。我所用的Jackson版本为2.9.8。内容有点多，分两次记录。这篇主要介绍一些序列化注解和反序列化注解，了解他们的作用。下一篇再介绍Jackson Property Inclusion Annotations和一些更加普遍的注解。
-
-我是直接建了一个springboot项目，直接在里面写的测试。项目的pom.xml.
-&lt;parent&gt;
-        &lt;gr</div>
-        </div>
-      </a>
-
-      <div class="index-btm">
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-04-27&nbsp;&nbsp;
         
         
           <i class="iconfont icon-inbox"></i>
