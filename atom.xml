@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>SHIV STEP</title>
+  
+  <subtitle>STEP BY STEP</subtitle>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2021-02-10T18:09:53.038Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Justshi</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring boot + spring cache + redis 缓存使用方式</title>
+    <link href="http://yoursite.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/"/>
+    <id>http://yoursite.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/</id>
+    <published>2021-02-10T15:09:53.000Z</published>
+    <updated>2021-02-10T18:09:53.038Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;spring-boot-spring-cache-redis-缓存使用方式&quot;&gt;&lt;a href=&quot;#spring-boot-spring-cache-redis-缓存使用方式&quot; class=&quot;headerlink&quot; title=&quot;spring boot +</summary>
+        
+      
+    
+    
+    
+    <category term="spring boot" scheme="http://yoursite.com/categories/spring-boot/"/>
+    
+    
+    <category term="cache" scheme="http://yoursite.com/tags/cache/"/>
+    
+    <category term="redis" scheme="http://yoursite.com/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析6——HandlerMethodReturnValueHandler</title>
+    <link href="http://yoursite.com/2020/02/28/springmvc-yuan-ma-fen-xi-6-handlermethodreturnvaluehandler/"/>
+    <id>http://yoursite.com/2020/02/28/springmvc-yuan-ma-fen-xi-6-handlermethodreturnvaluehandler/</id>
+    <published>2020-02-28T04:13:54.000Z</published>
+    <updated>2020-02-28T04:18:28.783Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;回到&lt;a href=&quot;/2020/02/26/springmvc-yuan-ma-fen-xi-5.1-handlermethodargumentresolver/&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析5.2——HandlerMethodArgumentResolver</title>
+    <link href="http://yoursite.com/2020/02/27/springmvc-yuan-ma-fen-xi-5-2-handlermethodargumentresolver/"/>
+    <id>http://yoursite.com/2020/02/27/springmvc-yuan-ma-fen-xi-5-2-handlermethodargumentresolver/</id>
+    <published>2020-02-27T09:27:17.000Z</published>
+    <updated>2020-02-27T13:43:20.107Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;接着上一篇，我们来探究一下&lt;code&gt;RequestResponseBodyMethodProcessor&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一-类实现图&quot;&gt;&lt;a href=&quot;#一-类实现图&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析5.1——HandlerMethodArgumentResolver</title>
+    <link href="http://yoursite.com/2020/02/26/springmvc-yuan-ma-fen-xi-5.1-handlermethodargumentresolver/"/>
+    <id>http://yoursite.com/2020/02/26/springmvc-yuan-ma-fen-xi-5.1-handlermethodargumentresolver/</id>
+    <published>2020-02-26T15:52:25.000Z</published>
+    <updated>2020-02-27T13:43:20.113Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt; 上一节&lt;a href=&quot;#&quot;&gt;Post not found: SpringMvc源码分析4.2——HandlerAdapter</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析4.2——HandlerAdapter</title>
+    <link href="http://yoursite.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-2-handleradapter/"/>
+    <id>http://yoursite.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-2-handleradapter/</id>
+    <published>2020-02-25T10:27:12.000Z</published>
+    <updated>2020-02-25T10:41:11.263Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;一-准备&quot;&gt;&lt;a href=&quot;#一-准备&quot; class=&quot;headerlink&quot; title=&quot;一. 准备&quot;&gt;&lt;/a&gt;一. 准备&lt;/h3&gt;&lt;p&gt;接着上一篇，我们暴露的接口:&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-java&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析4.1——HandlerAdapter</title>
+    <link href="http://yoursite.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-1-handleradapter/"/>
+    <id>http://yoursite.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-1-handleradapter/</id>
+    <published>2020-02-25T05:15:05.000Z</published>
+    <updated>2020-02-25T05:18:52.570Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;一-准备&quot;&gt;&lt;a href=&quot;#一-准备&quot; class=&quot;headerlink&quot; title=&quot;一. 准备&quot;&gt;&lt;/a&gt;一. 准备&lt;/h3&gt;&lt;p&gt;接着上一篇，我们暴露的接口:&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-java&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析3——HandlerMapping</title>
+    <link href="http://yoursite.com/2020/02/25/springmvc-yuan-ma-fen-xi-3-handlermapping/"/>
+    <id>http://yoursite.com/2020/02/25/springmvc-yuan-ma-fen-xi-3-handlermapping/</id>
+    <published>2020-02-24T16:10:01.000Z</published>
+    <updated>2020-02-24T16:13:02.469Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;SpringMvc源码分析3——HandlerMapping&quot;&gt;&lt;a href=&quot;#SpringMvc源码分析3——HandlerMapping&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析2——DispatcherServlet</title>
+    <link href="http://yoursite.com/2020/02/24/springmvc-yuan-ma-fen-xi-2-dispatcherservlet/"/>
+    <id>http://yoursite.com/2020/02/24/springmvc-yuan-ma-fen-xi-2-dispatcherservlet/</id>
+    <published>2020-02-24T08:29:47.000Z</published>
+    <updated>2020-02-26T16:03:08.909Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;从SpringMvc的中心处理器&lt;code&gt;DispatcherServlet&lt;/code&gt;开始说起。源码主要是基于&lt;code&gt;jdk1.8&lt;/code&gt;,&lt;code&gt;springboot</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringMvc源码分析1</title>
+    <link href="http://yoursite.com/2020/02/24/springmvc-yuan-ma-fen-xi-1/"/>
+    <id>http://yoursite.com/2020/02/24/springmvc-yuan-ma-fen-xi-1/</id>
+    <published>2020-02-24T03:56:45.000Z</published>
+    <updated>2020-02-24T04:14:09.047Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;SpringMvc源码分析1&quot;&gt;&lt;a href=&quot;#SpringMvc源码分析1&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/categories/SpringMvc/"/>
+    
+    
+    <category term="SpringMvc" scheme="http://yoursite.com/tags/SpringMvc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>监控Feign调用metrics</title>
+    <link href="http://yoursite.com/2020/02/22/jian-kong-feign-diao-yong-metrics/"/>
+    <id>http://yoursite.com/2020/02/22/jian-kong-feign-diao-yong-metrics/</id>
+    <published>2020-02-22T02:58:59.000Z</published>
+    <updated>2020-02-22T03:57:39.963Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;我们公司的微服务去年已经开始使用metrics来收集应用运行指标，结合prometheus和grafana来统一收集和可视化。服务间的调用我们是使用Feign来进行调用的，但是发现springboot应用没法收集Feign调用得metrics信息，</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Feign" scheme="http://yoursite.com/tags/Feign/"/>
+    
+    <category term="metrics" scheme="http://yoursite.com/tags/metrics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>springboot: no suitable HttpMessageConverter found for response</title>
+    <link href="http://yoursite.com/2020/02/21/springboot-no-suitable-httpmessageconverter-found-for-response/"/>
+    <id>http://yoursite.com/2020/02/21/springboot-no-suitable-httpmessageconverter-found-for-response/</id>
+    <published>2020-02-21T06:51:28.000Z</published>
+    <updated>2020-02-21T07:51:02.477Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;最近在使用&lt;code&gt;springboot&lt;/code&gt;调用第三方接口的时候，出现了这个异常Could not extract response: no suitable HttpMessageConverter found for</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>链接收藏</title>
+    <link href="http://yoursite.com/2020/02/08/lian-jie-shou-cang/"/>
+    <id>http://yoursite.com/2020/02/08/lian-jie-shou-cang/</id>
+    <published>2020-02-08T09:16:17.000Z</published>
+    <updated>2020-02-18T09:20:48.043Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;收藏一些较好的技术链接，整理方便查看&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一-java基础&quot;&gt;&lt;a href=&quot;#一-java基础&quot; class=&quot;headerlink&quot; title=&quot;一. java基础&quot;&gt;&lt;/a&gt;一.</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Jackson LocalDateTime的反序列化问题</title>
+    <link href="http://yoursite.com/2020/01/05/jackson-localdatetime-de-fan-xu-lie-hua-wen-ti/"/>
+    <id>http://yoursite.com/2020/01/05/jackson-localdatetime-de-fan-xu-lie-hua-wen-ti/</id>
+    <published>2020-01-04T16:34:27.000Z</published>
+    <updated>2020-01-05T13:35:02.132Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;当我们使用java8的LocalDateTime，LocalDate等接收来自前端请求json的时间字段时，会由于格式问题会导致反序列化失败，这里提供一种全局的解决方案。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-示例&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="jackson" scheme="http://yoursite.com/categories/jackson/"/>
+    
+    
+    <category term="jackson" scheme="http://yoursite.com/tags/jackson/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring boot配置文件属性转换</title>
+    <link href="http://yoursite.com/2019/08/17/spring-boot-pei-zhi-wen-jian-shu-xing-zhuan-huan/"/>
+    <id>http://yoursite.com/2019/08/17/spring-boot-pei-zhi-wen-jian-shu-xing-zhuan-huan/</id>
+    <published>2019-08-17T09:28:52.000Z</published>
+    <updated>2019-08-17T09:32:58.196Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在我们用Springboot进行开发的时候，我们的很多可配置化的参数会写在配置文件内，然后可以用&lt;code&gt;@ConfigurationProperties</summary>
+        
+      
+    
+    
+    
+    <category term="spring boot" scheme="http://yoursite.com/categories/spring-boot/"/>
+    
+    
+    <category term="spring boot" scheme="http://yoursite.com/tags/spring-boot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MapStruct ——An annotation processor for generating type-safe bean mappers</title>
+    <link href="http://yoursite.com/2019/08/10/mapstruct-an-annotation-processor-for-generating-type-safe-bean-mappers/"/>
+    <id>http://yoursite.com/2019/08/10/mapstruct-an-annotation-processor-for-generating-type-safe-bean-mappers/</id>
+    <published>2019-08-10T15:45:39.000Z</published>
+    <updated>2019-08-10T15:46:08.072Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;bean对象之间的相互映射的工具有不少，比如常见的BeanUtils，dozer，这都基本都是基于反射实现的，但是MapStruct则不同，下面我们就来看看MapStruct的使用方法吧！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;MapStruc</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Java8 Lambda Handling Exceptions</title>
+    <link href="http://yoursite.com/2019/07/27/java8-lambda-handling-exceptions/"/>
+    <id>http://yoursite.com/2019/07/27/java8-lambda-handling-exceptions/</id>
+    <published>2019-07-27T09:48:07.000Z</published>
+    <updated>2019-07-27T09:51:20.684Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;lambda表达式有利于我们写出非常简洁的代码，但是Java8中lambda表达式无法抛出受检异常，这样会使我们在lambda表达式中使用抛出Checked</summary>
+        
+      
+    
+    
+    
+    
+    <category term="lambda" scheme="http://yoursite.com/tags/lambda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次由spring-boot-devtools引发的类型转换问题</title>
+    <link href="http://yoursite.com/2019/07/20/ji-yi-ci-you-spring-boot-devtools-yin-fa-de-lei-xing-zhuan-huan-wen-ti/"/>
+    <id>http://yoursite.com/2019/07/20/ji-yi-ci-you-spring-boot-devtools-yin-fa-de-lei-xing-zhuan-huan-wen-ti/</id>
+    <published>2019-07-19T16:28:35.000Z</published>
+    <updated>2019-07-19T16:39:49.182Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在我们在用Springboot开发的时候，可能会引入spring-boot-devtools包，因为这个开发工具包提供了很多很好的供开发时使用的功能，比如提供一些默认的配置，自动重启，远程应用等。但是今天我就碰到了一个与它相关的问题，困扰了我不少时</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Feign配置易错点</title>
+    <link href="http://yoursite.com/2019/07/13/feign-pei-zhi-yi-cuo-dian/"/>
+    <id>http://yoursite.com/2019/07/13/feign-pei-zhi-yi-cuo-dian/</id>
+    <published>2019-07-13T14:19:40.000Z</published>
+    <updated>2019-07-13T14:27:53.175Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在我们利用spring-cloud-openfeign的时候，不同的client可能需要一些自定义的配置，我们可以在配置文件中配置，也可以写相应的配置类。而写配置类有一个易掉的坑，接下来就来讲解一下这个坑以及解决方案！&lt;/p&gt;
+&lt;/blockquo</summary>
+        
+      
+    
+    
+    
+    <category term="feign" scheme="http://yoursite.com/categories/feign/"/>
+    
+    
+    <category term="feign" scheme="http://yoursite.com/tags/feign/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Using Optional with Jackson</title>
+    <link href="http://yoursite.com/2019/07/06/using-optional-with-jackson/"/>
+    <id>http://yoursite.com/2019/07/06/using-optional-with-jackson/</id>
+    <published>2019-07-06T15:06:20.000Z</published>
+    <updated>2019-07-06T15:54:14.990Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;在java8的时候，针对NOP异常，提供了Optional的解决方案。但是你了解Jackson序列化含Optional字段的POJO时会发生什么吗？在本文中，将介绍Optional类，然后解释在与Jackson一起使用时可能遇到的一些问题。接下来，</summary>
+        
+      
+    
+    
+    
+    <category term="jackson" scheme="http://yoursite.com/categories/jackson/"/>
+    
+    
+    <category term="jackson" scheme="http://yoursite.com/tags/jackson/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring Boot 2实现分布式锁</title>
+    <link href="http://yoursite.com/2019/06/29/spring-boot-2-shi-xian-fen-bu-shi-suo/"/>
+    <id>http://yoursite.com/2019/06/29/spring-boot-2-shi-xian-fen-bu-shi-suo/</id>
+    <published>2019-06-29T10:09:16.000Z</published>
+    <updated>2019-06-29T11:11:59.960Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;随着应用的分布式部署，有很多新的问题需要考虑解决，分布式锁就是其中一个。目前我们的项目中分布式锁是采用zk来实现的。其实Spring早就提供了分布式锁的实现。早期，分布式锁的相关代码存在于Spring Cloud的子项目Spring Cloud</summary>
+        
+      
+    
+    
+    
+    
+    <category term="spring boot" scheme="http://yoursite.com/tags/spring-boot/"/>
+    
+    <category term="分布式锁" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
+    
+  </entry>
+  
+</feed>
