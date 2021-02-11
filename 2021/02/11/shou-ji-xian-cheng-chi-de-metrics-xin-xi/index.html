@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Using Optional with Jackson, SHIV STEP">
+    <meta name="keywords" content="收集线程池的metrics信息, SHIV STEP">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Using Optional with Jackson | SHIV STEP</title>
+    <title>收集线程池的metrics信息 | SHIV STEP</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Using Optional with Jackson</h1>
+                    <h1 class="description center-align post-title">收集线程池的metrics信息</h1>
                 </div>
             </div>
         </div>
@@ -434,23 +434,18 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/jackson/">
-                                <span class="chip bg-color">jackson</span>
+                            <a href="/tags/metrics/">
+                                <span class="chip bg-color">metrics</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                                <span class="chip bg-color">线程池</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/jackson/" class="post-category">
-                                jackson
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -459,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-07-06
+                    2021-02-11
                 </div>
                 
 
@@ -468,7 +463,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    746
+                    772
                 </div>
                 
 
@@ -499,120 +494,180 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>在java8的时候，针对NOP异常，提供了Optional的解决方案。但是你了解Jackson序列化含Optional字段的POJO时会发生什么吗？在本文中，将介绍Optional类，然后解释在与Jackson一起使用时可能遇到的一些问题。接下来，我们将介绍一个解决方案，让Jackson将Optional视为普通的可空对象。</p>
+<p>了解线程池的状态，比如，活跃线程数量、缓冲队列的排队情况，对我们来说非常有意义，可以让我们了解应用的状态，对是否需要调整线程池参数提供了有力的依据。</p>
 </blockquote>
-<h3 id="1-引入Jackson"><a href="#1-引入Jackson" class="headerlink" title="1 引入Jackson"></a>1 引入Jackson</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.fasterxml.jackson.core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jackson-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.9.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于我们公司的微服务已经开始使用metrics来收集应用运行指标，结合<code>prometheus</code>和<code>grafana</code>来统一收集和可视化。所以我就想通过这一套体系来收集线程池运行时的相关信息，并通过<code>grafana</code>展示出来，如图所示，部署在两台服务器上的某个线程池数据展示：</p>
+<p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210211155758983.png" alt="image-20210211155758983"></p>
+<p>下面我们就开始在应该中做相关的数据采集。</p>
+<h4 id="1-build-gradle"><a href="#1-build-gradle" class="headerlink" title="1. build.gradle"></a>1. build.gradle</h4><pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">plugins <span class="token punctuation">{</span>
+    id <span class="token string">'org.springframework.boot'</span> version <span class="token string">'2.4.1'</span>
+    id <span class="token string">'io.spring.dependency-management'</span> version <span class="token string">'1.0.10.RELEASE'</span>
+    id <span class="token string">'java'</span>
+<span class="token punctuation">}</span>
 
-<h3 id="2-实体类"><a href="#2-实体类" class="headerlink" title="2 实体类"></a>2 实体类</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+group <span class="token operator">=</span> <span class="token string">'com.example'</span>
+version <span class="token operator">=</span> <span class="token string">'0.0.1-SNAPSHOT'</span>
+sourceCompatibility <span class="token operator">=</span> <span class="token string">'1.8'</span>
 
-    <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
+configurations <span class="token punctuation">{</span>
+    compileOnly <span class="token punctuation">{</span>
+        extendsFrom annotationProcessor
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-    <span class="token keyword">private</span> <span class="token class-name">Optional</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> nickName<span class="token punctuation">;</span>
+repositories <span class="token punctuation">{</span>
+    <span class="token function">mavenLocal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    maven <span class="token punctuation">{</span> url <span class="token string">'https://repo.spring.io/milestone'</span> <span class="token punctuation">}</span>
+    maven <span class="token punctuation">{</span> url <span class="token string gstring">"http://maven.aliyun.com/nexus/content/groups/public/"</span> <span class="token punctuation">}</span>
+    <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">jcenter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> username<span class="token punctuation">;</span>
+ext <span class="token punctuation">{</span>
+    <span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'springCloudVersion'</span><span class="token punctuation">,</span> <span class="token string gstring">"2020.0.0-M6"</span><span class="token punctuation">)</span>
+    <span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'mybatisPlusVersion'</span><span class="token punctuation">,</span> <span class="token string gstring">"3.4.0"</span><span class="token punctuation">)</span>
+    <span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'beetlVersion'</span><span class="token punctuation">,</span> <span class="token string gstring">"3.3.0.RELEASE"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+dependencies <span class="token punctuation">{</span>
+    implementation <span class="token string">'org.springframework.boot:spring-boot-starter-web'</span>
+    implementation <span class="token string">'org.springframework.boot:spring-boot-starter-validation'</span>
+    implementation <span class="token string">'org.springframework.cloud:spring-cloud-starter-sleuth'</span>
+    compileOnly <span class="token string">'org.projectlombok:lombok'</span>
+    testCompileOnly <span class="token string">'org.projectlombok:lombok'</span>
+    annotationProcessor <span class="token string">'org.springframework.boot:spring-boot-configuration-processor'</span>
+    annotationProcessor <span class="token string">'org.projectlombok:lombok'</span>
+    testImplementation <span class="token string">'org.springframework.boot:spring-boot-starter-test'</span>
+    implementation <span class="token string">'org.springframework.boot:spring-boot-starter-actuator'</span>
+    runtimeOnly <span class="token string">'io.micrometer:micrometer-registry-prometheus'</span>
+<span class="token punctuation">}</span>
+
+dependencyManagement <span class="token punctuation">{</span>
+    imports <span class="token punctuation">{</span>
+        mavenBom <span class="token string gstring">"org.springframework.cloud:spring-cloud-dependencies:<span class="token expression"><span class="token punctuation">$</span><span class="token punctuation">{</span>springCloudVersion<span class="token punctuation">}</span></span>"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+test <span class="token punctuation">{</span>
+    <span class="token function">useJUnitPlatform</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2-application-yml"><a href="#2-application-yml" class="headerlink" title="2. application.yml"></a>2. application.yml</h4><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
+  <span class="token key atrule">shutdown</span><span class="token punctuation">:</span> graceful
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">application</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> demo
+  <span class="token key atrule">lifecycle</span><span class="token punctuation">:</span>
+    <span class="token key atrule">timeout-per-shutdown-phase</span><span class="token punctuation">:</span> 30s
+  <span class="token key atrule">jackson</span><span class="token punctuation">:</span>
+    <span class="token key atrule">time-zone</span><span class="token punctuation">:</span> GMT+8
+<span class="token key atrule">management</span><span class="token punctuation">:</span>
+  <span class="token key atrule">endpoints</span><span class="token punctuation">:</span>
+    <span class="token key atrule">web</span><span class="token punctuation">:</span>
+      <span class="token key atrule">base-path</span><span class="token punctuation">:</span> /actuator
+      <span class="token key atrule">exposure</span><span class="token punctuation">:</span>
+        <span class="token key atrule">include</span><span class="token punctuation">:</span> <span class="token string">"*"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3-线程池配置"><a href="#3-线程池配置" class="headerlink" title="3. 线程池配置"></a>3. 线程池配置</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ExecutorConfig</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">String</span> SERVICE_EXECUTOR <span class="token operator">=</span> <span class="token string">"serviceExecutor"</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">BossExecutorProperties</span> executorProperties<span class="token punctuation">;</span>
+   
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>SERVICE_EXECUTOR<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">ThreadPoolTaskExecutor</span> <span class="token function">serviceExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">ThreadPoolTaskExecutor</span> executor <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadPoolTaskExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setCorePoolSize</span><span class="token punctuation">(</span>executorProperties<span class="token punctuation">.</span><span class="token function">getService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCorePoolSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setMaxPoolSize</span><span class="token punctuation">(</span>executorProperties<span class="token punctuation">.</span><span class="token function">getService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getMaxPoolSize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setQueueCapacity</span><span class="token punctuation">(</span>executorProperties<span class="token punctuation">.</span><span class="token function">getService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getQueueCapacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setKeepAliveSeconds</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> executorProperties<span class="token punctuation">.</span><span class="token function">getService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getKeepAlive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setThreadNamePrefix</span><span class="token punctuation">(</span><span class="token string">"executor-service-"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 线程池对拒绝任务的处理策略：这里采用了CallerRunsPolicy策略，当线程池没有处理能力的时候，该策略会直接在 execute 方法的调用线程中运行被拒绝的任务；如果执行程序已关闭，则会丢弃该任务</span>
+        executor<span class="token punctuation">.</span><span class="token function">setRejectedExecutionHandler</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ThreadPoolExecutor<span class="token punctuation">.</span>CallerRunsPolicy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setWaitForTasksToCompleteOnShutdown</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        executor<span class="token punctuation">.</span><span class="token function">setAwaitTerminationSeconds</span><span class="token punctuation">(</span>executorProperties<span class="token punctuation">.</span><span class="token function">getService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAwaitTerminationSeconds</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> executor<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token class-name">String</span> username<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>username <span class="token operator">=</span> username<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token annotation punctuation">@Validated</span>
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"boss.config.executor"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BossCuiShouExecutorProperties</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Valid</span>
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token keyword">private</span> <span class="token class-name">ExecutorProperties</span> async<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Valid</span>
+    <span class="token annotation punctuation">@NotNull</span>
+    <span class="token keyword">private</span> <span class="token class-name">ExecutorProperties</span> service<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Data</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">ExecutorProperties</span> <span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@NotNull</span>
+        <span class="token keyword">private</span> <span class="token class-name">Integer</span> corePoolSize<span class="token punctuation">;</span>
+        <span class="token annotation punctuation">@NotNull</span>
+        <span class="token keyword">private</span> <span class="token class-name">Integer</span> maxPoolSize<span class="token punctuation">;</span>
+        <span class="token annotation punctuation">@NotNull</span>
+        <span class="token keyword">private</span> <span class="token class-name">Integer</span> queueCapacity<span class="token punctuation">;</span>
+        <span class="token annotation punctuation">@NotNull</span>
+        <span class="token keyword">private</span> <span class="token class-name">Duration</span> keepAlive<span class="token punctuation">;</span>
+        <span class="token annotation punctuation">@NotNull</span>
+        <span class="token keyword">private</span> <span class="token keyword">int</span> awaitTerminationSeconds <span class="token operator">=</span> <span class="token number">30</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token class-name">Optional</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> <span class="token function">getNickName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> nickName<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4-收集线程池运行数据"><a href="#4-收集线程池运行数据" class="headerlink" title="4. 收集线程池运行数据"></a>4. 收集线程池运行数据</h4><blockquote>
+<p>这里我们使用<code>micrometer</code>来收集数据.</p>
+</blockquote>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+ * 关建的收集metrics信息的代码就在这
+ */</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MetricsSupport</span> <span class="token punctuation">{</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setNickName</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> nickName<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>nickName <span class="token operator">=</span> nickName<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><em>请记住，Optionals不应该用作属性，这里这样做是为了说明问题。</em></p>
-<h3 id="3-序列化"><a href="#3-序列化" class="headerlink" title="3 序列化"></a>3 序列化</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JacksonTest</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> <span class="token class-name">MeterRegistry</span> meterRegistry<span class="token punctuation">;</span>
+   
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span>SERVICE_EXECUTOR<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">ThreadPoolTaskExecutor</span> serviceExecutor<span class="token punctuation">;</span>
 
-    <span class="token keyword">private</span> <span class="token class-name">ObjectMapper</span> mapper<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Before</span>
+    <span class="token annotation punctuation">@PostConstruct</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">initServiceExecutorMetrics</span><span class="token punctuation">(</span>serviceExecutor<span class="token punctuation">,</span> <span class="token string">"executor.service"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">JsonProcessingException</span> <span class="token punctuation">{</span>
-        <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        user<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"SHIV"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        user<span class="token punctuation">.</span><span class="token function">setNickName</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"JACK"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token class-name">String</span> result <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">writeValueAsString</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">/**
+     * 线程池metrics指标监控
+     * @param serviceExecutor 线程池
+     * @param namePrefix 指标名称前缀
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">initServiceExecutorMetrics</span><span class="token punctuation">(</span><span class="token class-name">ThreadPoolTaskExecutor</span> serviceExecutor<span class="token punctuation">,</span> <span class="token class-name">String</span> namePrefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".active"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> <span class="token class-name">ThreadPoolTaskExecutor</span><span class="token operator">::</span><span class="token function">getActiveCount</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".core"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> <span class="token class-name">ThreadPoolTaskExecutor</span><span class="token operator">::</span><span class="token function">getCorePoolSize</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".max"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> <span class="token class-name">ThreadPoolTaskExecutor</span><span class="token operator">::</span><span class="token function">getMaxPoolSize</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".pool"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> <span class="token class-name">ThreadPoolTaskExecutor</span><span class="token operator">::</span><span class="token function">getPoolSize</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".queue"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> executor <span class="token operator">-&gt;</span> executor<span class="token punctuation">.</span><span class="token function">getThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getQueue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".task"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> executor <span class="token operator">-&gt;</span> executor<span class="token punctuation">.</span><span class="token function">getThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTaskCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Gauge</span><span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span>namePrefix <span class="token operator">+</span> <span class="token string">".complete"</span><span class="token punctuation">,</span> serviceExecutor<span class="token punctuation">,</span> executor <span class="token operator">-&gt;</span> executor<span class="token punctuation">.</span><span class="token function">getThreadPoolExecutor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getCompletedTaskCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>meterRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果:</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">{</span><span class="token string">"username"</span><span class="token operator">:</span><span class="token string">"SHIV"</span><span class="token punctuation">,</span><span class="token string">"nickName"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string">"present"</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>虽然这可能看起来很奇怪，但是这就是实际的结果。在这种情况下，isPresent()是Optional类的公共getter 。这意味着它将使用值true或false进行序列化，具体取决于它是否为空。这是Jackson的默认序列化行为。但是通常这不是我们想要的结果，我们需要的是nickName的实际值”JACK”。</p>
-<h3 id="4-反序列化"><a href="#4-反序列化" class="headerlink" title="4 反序列化"></a>4 反序列化</h3><p>让我们将上面的输出结果反序列化一下，看看结果：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
-    <span class="token class-name">String</span> json <span class="token operator">=</span> <span class="token string">"{\"username\":\"SHIV\",\"nickName\":{\"present\":true}}"</span><span class="token punctuation">;</span>
-    <span class="token class-name">User</span> result <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">readValue</span><span class="token punctuation">(</span>json<span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>发生异常，输出结果：</p>
-<pre class="line-numbers language-none"><code class="language-none">com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException: Unrecognized field "present" (class java.util.Optional), not marked as ignorable (0 known properties: ])
- at [Source: (String)"{"username":"SHIV","nickName":{"present":true}}"; line: 1, column: 46] (through reference chain: cn.justme.lockdemo.User["nickName"]-&gt;java.util.Optional["present"])
-    at com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException.from(UnrecognizedPropertyException.java:61)
-    ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>jackson无法识别present字段.<br>如果用<code>String json = "{\"username\":\"SHIV\",\"nickName\":\"JACK\"}";</code>来反序列化，依然不会成功。</p>
-<h3 id="5-解决方案"><a href="#5-解决方案" class="headerlink" title="5 解决方案"></a>5 解决方案</h3><p>我们想要的是让Jackson将空的Optional视为null，并将当前的Optional视为表示其值的字段。幸运的是，这个问题已经解决了。Jackson有一组处理JDK 8数据类型的模块，包括Optional。</p>
-<h4 id="5-1-maven依赖"><a href="#5-1-maven依赖" class="headerlink" title="5.1 maven依赖"></a>5.1 maven依赖</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.fasterxml.jackson.datatype<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jackson-datatype-jdk8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>2.9.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>接着，我们需要做的就是使用ObjectMapper注册模块</p>
-<pre class="line-numbers language-javas" data-language="javas"><code class="language-javas">ObjectMapper mapper = new ObjectMapper();
-mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="5-2-序列化"><a href="#5-2-序列化" class="headerlink" title="5.2 序列化"></a>5.2 序列化</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Common1</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token class-name">ObjectMapper</span> mapper<span class="token punctuation">;</span>
-
-    <span class="token annotation punctuation">@Before</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        mapper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ObjectMapper</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        mapper<span class="token punctuation">.</span><span class="token function">registerModule</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Jdk8Module</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token annotation punctuation">@Test</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">JsonProcessingException</span> <span class="token punctuation">{</span>
-        <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        user<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"SHIV"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        user<span class="token punctuation">.</span><span class="token function">setNickName</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"JACK"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token class-name">String</span> result <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">writeValueAsString</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        user<span class="token punctuation">.</span><span class="token function">setNickName</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">String</span> result1 <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">writeValueAsString</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>result1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>输出结果</p>
-<pre class="line-numbers language-none"><code class="language-none">{"username":"SHIV","nickName":"JACK"}
-{"username":"SHIV","nickName":null}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="5-4-反序列化"><a href="#5-4-反序列化" class="headerlink" title="5.4 反序列化"></a>5.4 反序列化</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
-    <span class="token class-name">String</span> json1 <span class="token operator">=</span> <span class="token string">"{\"username\":\"SHIV\",\"nickName\":\"JACK\"}"</span><span class="token punctuation">;</span>
-    <span class="token class-name">User</span> result1 <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">readValue</span><span class="token punctuation">(</span>json1<span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token function">assertThat</span><span class="token punctuation">(</span>result1<span class="token punctuation">.</span><span class="token function">getNickName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEqualTo</span><span class="token punctuation">(</span><span class="token class-name">Optional</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"JACK"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-
-    <span class="token class-name">String</span> json2 <span class="token operator">=</span> <span class="token string">"{\"username\":\"SHIV\",\"nickName\":null}"</span><span class="token punctuation">;</span>
-    <span class="token class-name">User</span> result2 <span class="token operator">=</span> mapper<span class="token punctuation">.</span><span class="token function">readValue</span><span class="token punctuation">(</span>json2<span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">assertThat</span><span class="token punctuation">(</span>result2<span class="token punctuation">.</span><span class="token function">getNickName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>单元测试成功！</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>主要的工作其实就是第4步，做好之后启动应用就可以通过端口<code>/actuator/prometheus</code>看到对应的<code>metrics</code>信息！最后还需要在<code>grafana</code>上配置相应的图形展示。</p>
 
                 
             </div>
@@ -639,7 +694,7 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2019/07/06/using-optional-with-jackson/">http://yoursite.com/2019/07/06/using-optional-with-jackson/</a>
+                    <a href="http://yoursite.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/">http://yoursite.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -677,8 +732,12 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/jackson/">
-                                    <span class="chip bg-color">jackson</span>
+                                <a href="/tags/metrics/">
+                                    <span class="chip bg-color">metrics</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                                    <span class="chip bg-color">线程池</span>
                                 </a>
                             
                         </div>
@@ -849,7 +908,7 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
         repo: 'justsme.github.io',
         owner: 'justsme',
         admin: ["justsme"],
-        id: '2019-07-06T23-06-20',
+        id: '2021-02-11T16-21-54',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -875,17 +934,18 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/07/13/feign-pei-zhi-yi-cuo-dian/">
+                <a href="/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Feign配置易错点">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="收集线程池的metrics信息">
                         
-                        <span class="card-title">Feign配置易错点</span>
+                        <span class="card-title">收集线程池的metrics信息</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -895,26 +955,27 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-07-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-11
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/feign/" class="post-category">
-                                    feign
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            shiv
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/feign/">
-                        <span class="chip bg-color">feign</span>
+                    <a href="/tags/metrics/">
+                        <span class="chip bg-color">metrics</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">
+                        <span class="chip bg-color">线程池</span>
                     </a>
                     
                 </div>
@@ -928,13 +989,13 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/06/29/spring-boot-2-shi-xian-fen-bu-shi-suo/">
+                <a href="/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Spring Boot 2实现分布式锁">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="spring boot + spring cache + redis 缓存使用方式">
                         
-                        <span class="card-title">Spring Boot 2实现分布式锁</span>
+                        <span class="card-title">spring boot + spring cache + redis 缓存使用方式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -945,12 +1006,16 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-10
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            shiv
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/spring-boot/" class="post-category">
+                                    spring boot
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -958,12 +1023,12 @@ mapper.registerModule(new Jdk8Module());<span aria-hidden="true" class="line-num
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/spring-boot/">
-                        <span class="chip bg-color">spring boot</span>
+                    <a href="/tags/cache/">
+                        <span class="chip bg-color">cache</span>
                     </a>
                     
-                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
-                        <span class="chip bg-color">分布式锁</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>

@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-02-10T18:09:53.038Z</updated>
+  <updated>2021-02-11T08:26:05.637Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>收集线程池的metrics信息</title>
+    <link href="http://yoursite.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/"/>
+    <id>http://yoursite.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/</id>
+    <published>2021-02-11T08:21:54.000Z</published>
+    <updated>2021-02-11T08:26:05.637Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;了解线程池的状态，比如，活跃线程数量、缓冲队列的排队情况，对我们来说非常有意义，可以让我们了解应用的状态，对是否需要调整线程池参数提供了有力的依据。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;由于我们公司的微服务已经开始使用metrics来收集应用</summary>
+        
+      
+    
+    
+    
+    
+    <category term="metrics" scheme="http://yoursite.com/tags/metrics/"/>
+    
+    <category term="线程池" scheme="http://yoursite.com/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>spring boot + spring cache + redis 缓存使用方式</title>
@@ -496,32 +524,6 @@
     
     
     <category term="jackson" scheme="http://yoursite.com/tags/jackson/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Boot 2实现分布式锁</title>
-    <link href="http://yoursite.com/2019/06/29/spring-boot-2-shi-xian-fen-bu-shi-suo/"/>
-    <id>http://yoursite.com/2019/06/29/spring-boot-2-shi-xian-fen-bu-shi-suo/</id>
-    <published>2019-06-29T10:09:16.000Z</published>
-    <updated>2019-06-29T11:11:59.960Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;随着应用的分布式部署，有很多新的问题需要考虑解决，分布式锁就是其中一个。目前我们的项目中分布式锁是采用zk来实现的。其实Spring早就提供了分布式锁的实现。早期，分布式锁的相关代码存在于Spring Cloud的子项目Spring Cloud</summary>
-        
-      
-    
-    
-    
-    
-    <category term="spring boot" scheme="http://yoursite.com/tags/spring-boot/"/>
-    
-    <category term="分布式锁" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/"/>
     
   </entry>
   
