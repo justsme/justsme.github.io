@@ -434,16 +434,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/mybatis-plus/">
-                                <span class="chip bg-color">mybatis plus</span>
-                            </a>
-                        
                             <a href="/tags/spring-boot/">
                                 <span class="chip bg-color">spring boot</span>
                             </a>
                         
                             <a href="/tags/mybatis/">
                                 <span class="chip bg-color">mybatis</span>
+                            </a>
+                        
+                            <a href="/tags/mybatis-plus/">
+                                <span class="chip bg-color">mybatis plus</span>
                             </a>
                         
                     </div>
@@ -585,40 +585,34 @@ configurations <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 
 repositories <span class="token punctuation">{</span>
+    <span class="token comment">// 为了加快速度，配置阿里镜像仓库</span>
     maven <span class="token punctuation">{</span> url <span class="token string gstring">"http://maven.aliyun.com/nexus/content/groups/public"</span> <span class="token punctuation">}</span>
     <span class="token function">mavenCentral</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 ext <span class="token punctuation">{</span>
-    <span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'springCloudVersion'</span><span class="token punctuation">,</span> <span class="token string gstring">"Hoxton.SR8"</span><span class="token punctuation">)</span>
     <span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'mybaitsPlusVersion'</span><span class="token punctuation">,</span> <span class="token string gstring">"3.4.2"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 dependencies <span class="token punctuation">{</span>
     implementation <span class="token string">'org.springframework.boot:spring-boot-starter-web'</span>
-    implementation <span class="token string">'org.springframework.cloud:spring-cloud-starter-sleuth'</span>
     compileOnly <span class="token string">'org.projectlombok:lombok'</span>
     testCompileOnly <span class="token string">'org.projectlombok:lombok'</span>
     <span class="token comment">// 这里采用内存数据库</span>
     runtimeOnly <span class="token string">'com.h2database:h2'</span>
+    <span class="token comment">// 引入mybatis plus</span>
     compile <span class="token string gstring">"com.baomidou:mybatis-plus-boot-starter:<span class="token expression"><span class="token punctuation">$</span><span class="token punctuation">{</span>mybaitsPlusVersion<span class="token punctuation">}</span></span>"</span>
-    annotationProcessor <span class="token string">'org.springframework.boot:spring-boot-configuration-processor'</span>
     annotationProcessor <span class="token string">'org.projectlombok:lombok'</span>
     <span class="token function">testImplementation</span><span class="token punctuation">(</span><span class="token string">'org.springframework.boot:spring-boot-starter-test'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         exclude group<span class="token punctuation">:</span> <span class="token string">'org.junit.vintage'</span><span class="token punctuation">,</span> module<span class="token punctuation">:</span> <span class="token string">'junit-vintage-engine'</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-dependencyManagement <span class="token punctuation">{</span>
-    imports <span class="token punctuation">{</span>
-        mavenBom <span class="token string gstring">"org.springframework.cloud:spring-cloud-dependencies:<span class="token expression"><span class="token punctuation">$</span><span class="token punctuation">{</span>springCloudVersion<span class="token punctuation">}</span></span>"</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
 
 test <span class="token punctuation">{</span>
     <span class="token function">useJUnitPlatform</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="2-application-yml"><a href="#2-application-yml" class="headerlink" title="2. application.yml"></a>2. application.yml</h5><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
     <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> org.h2.Driver
@@ -840,16 +834,16 @@ User(super=BaseEntity(id=5, isDelete=false, createTime=2021-02-12T14:11:54.279, 
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/mybatis-plus/">
-                                    <span class="chip bg-color">mybatis plus</span>
-                                </a>
-                            
                                 <a href="/tags/spring-boot/">
                                     <span class="chip bg-color">spring boot</span>
                                 </a>
                             
                                 <a href="/tags/mybatis/">
                                     <span class="chip bg-color">mybatis</span>
+                                </a>
+                            
+                                <a href="/tags/mybatis-plus/">
+                                    <span class="chip bg-color">mybatis plus</span>
                                 </a>
                             
                         </div>
@@ -1086,16 +1080,16 @@ User(super=BaseEntity(id=5, isDelete=false, createTime=2021-02-12T14:11:54.279, 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mybatis-plus/">
-                        <span class="chip bg-color">mybatis plus</span>
-                    </a>
-                    
                     <a href="/tags/spring-boot/">
                         <span class="chip bg-color">spring boot</span>
                     </a>
                     
                     <a href="/tags/mybatis/">
                         <span class="chip bg-color">mybatis</span>
+                    </a>
+                    
+                    <a href="/tags/mybatis-plus/">
+                        <span class="chip bg-color">mybatis plus</span>
                     </a>
                     
                 </div>

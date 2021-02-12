@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-12T06:45:01.051Z</updated>
+  <updated>2021-02-12T08:06:40.174Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/</id>
     <published>2021-02-12T06:30:07.000Z</published>
-    <updated>2021-02-12T06:45:01.051Z</updated>
+    <updated>2021-02-12T08:06:40.174Z</updated>
     
     
       
@@ -38,11 +38,11 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
   </entry>
   
