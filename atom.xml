@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-12T08:06:40.174Z</updated>
+  <updated>2021-02-12T12:58:31.406Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Mybatis Plus起步</title>
+    <title>Mybatis Plus 常用注解</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/</id>
+    <published>2021-02-12T12:38:47.000Z</published>
+    <updated>2021-02-12T12:58:31.406Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;上一章我们讲了 &lt;a href=&quot;/2021/02/12/mybatis-plus-qi-bu/&quot; title=&quot;Mybatis Plus 起步&quot;&gt;Mybatis Plus</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis Plus 起步</title>
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/</id>
     <published>2021-02-12T06:30:07.000Z</published>
-    <updated>2021-02-12T08:06:40.174Z</updated>
+    <updated>2021-02-12T09:14:18.515Z</updated>
     
     
       
@@ -38,11 +68,11 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
-    
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
   </entry>
   
@@ -501,33 +531,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Feign配置易错点</title>
-    <link href="http://wvht2y.coding-pages.com/2019/07/13/feign-pei-zhi-yi-cuo-dian/"/>
-    <id>http://wvht2y.coding-pages.com/2019/07/13/feign-pei-zhi-yi-cuo-dian/</id>
-    <published>2019-07-13T14:19:40.000Z</published>
-    <updated>2019-07-13T14:27:53.175Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在我们利用spring-cloud-openfeign的时候，不同的client可能需要一些自定义的配置，我们可以在配置文件中配置，也可以写相应的配置类。而写配置类有一个易掉的坑，接下来就来讲解一下这个坑以及解决方案！&lt;/p&gt;
-&lt;/blockquo</summary>
-        
-      
-    
-    
-    
-    <category term="feign" scheme="http://wvht2y.coding-pages.com/categories/feign/"/>
-    
-    
-    <category term="feign" scheme="http://wvht2y.coding-pages.com/tags/feign/"/>
     
   </entry>
   
