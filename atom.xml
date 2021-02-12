@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-12T13:41:40.790Z</updated>
+  <updated>2021-02-12T17:24:05.207Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Mybatis Plus 常用注解（二）</title>
-    <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/"/>
-    <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/</id>
-    <published>2021-02-12T12:38:47.000Z</published>
-    <updated>2021-02-12T13:41:40.790Z</updated>
+    <title>Mybatis Plus 3.1 —— Mapper CRUD之查询</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/</id>
+    <published>2021-02-12T17:09:53.000Z</published>
+    <updated>2021-02-12T17:24:05.207Z</updated>
     
     
       
@@ -29,7 +29,9 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;上一章我们讲了 &lt;a href=&quot;/2021/02/12/mybatis-plus-qi-bu/&quot; title=&quot;Mybatis Plus 起步（一）&quot;&gt;Mybatis Plus</summary>
+&lt;p&gt;这一章，我们开始一起学习使用Mapper来进行增删改查！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&quot;一-前置准备&quot;&gt;&lt;a href=&quot;#一-前置准备&quot; class=&quot;headerlink&quot; title=&quot;一. 前置准备&quot;&gt;&lt;/a&gt;一.</summary>
         
       
     
@@ -47,11 +49,41 @@
   </entry>
   
   <entry>
-    <title>Mybatis Plus 起步（一）</title>
+    <title>MybatisPlus 2 —— 常用注解</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/</id>
+    <published>2021-02-12T12:38:47.000Z</published>
+    <updated>2021-02-12T17:07:36.400Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;上一章我们讲了 &lt;a href=&quot;/2021/02/12/mybatis-plus-qi-bu/&quot; title=&quot;Mybatis Plus 1 —— 起步&quot;&gt;Mybatis Plus 1 ——</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mybatis Plus 1 —— 起步</title>
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/</id>
     <published>2021-02-12T06:30:07.000Z</published>
-    <updated>2021-02-12T13:41:48.920Z</updated>
+    <updated>2021-02-12T17:07:38.550Z</updated>
     
     
       
@@ -509,28 +541,6 @@
     
     
     <category term="lambda" scheme="http://wvht2y.coding-pages.com/tags/lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记一次由spring-boot-devtools引发的类型转换问题</title>
-    <link href="http://wvht2y.coding-pages.com/2019/07/20/ji-yi-ci-you-spring-boot-devtools-yin-fa-de-lei-xing-zhuan-huan-wen-ti/"/>
-    <id>http://wvht2y.coding-pages.com/2019/07/20/ji-yi-ci-you-spring-boot-devtools-yin-fa-de-lei-xing-zhuan-huan-wen-ti/</id>
-    <published>2019-07-19T16:28:35.000Z</published>
-    <updated>2019-07-19T16:39:49.182Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在我们在用Springboot开发的时候，可能会引入spring-boot-devtools包，因为这个开发工具包提供了很多很好的供开发时使用的功能，比如提供一些默认的配置，自动重启，远程应用等。但是今天我就碰到了一个与它相关的问题，困扰了我不少时</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
