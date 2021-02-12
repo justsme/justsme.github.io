@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-12T12:58:31.406Z</updated>
+  <updated>2021-02-12T13:41:40.790Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Mybatis Plus 常用注解</title>
+    <title>Mybatis Plus 常用注解（二）</title>
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/</id>
     <published>2021-02-12T12:38:47.000Z</published>
-    <updated>2021-02-12T12:58:31.406Z</updated>
+    <updated>2021-02-12T13:41:40.790Z</updated>
     
     
       
@@ -29,7 +29,7 @@
         
         
     <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;上一章我们讲了 &lt;a href=&quot;/2021/02/12/mybatis-plus-qi-bu/&quot; title=&quot;Mybatis Plus 起步&quot;&gt;Mybatis Plus</summary>
+&lt;p&gt;上一章我们讲了 &lt;a href=&quot;/2021/02/12/mybatis-plus-qi-bu/&quot; title=&quot;Mybatis Plus 起步（一）&quot;&gt;Mybatis Plus</summary>
         
       
     
@@ -47,11 +47,11 @@
   </entry>
   
   <entry>
-    <title>Mybatis Plus 起步</title>
+    <title>Mybatis Plus 起步（一）</title>
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/</id>
     <published>2021-02-12T06:30:07.000Z</published>
-    <updated>2021-02-12T09:14:18.515Z</updated>
+    <updated>2021-02-12T13:41:48.920Z</updated>
     
     
       
