@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-11T08:26:05.637Z</updated>
+  <updated>2021-02-12T06:45:01.051Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mybatis Plus起步</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/</id>
+    <published>2021-02-12T06:30:07.000Z</published>
+    <updated>2021-02-12T06:45:01.051Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;首先说明在这里我们不讨论&lt;code&gt;mybatis&lt;/code&gt;和&lt;code&gt;jpa&lt;/code&gt;孰优孰劣的问题，毕竟这个问题已经争论很多年了，每个人都有自己的喜好和习惯，不做过多评价。在国内，使用&lt;code&gt;mybatis&lt;/code&gt;的还是比&lt;</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>收集线程池的metrics信息</title>
     <link href="http://wvht2y.coding-pages.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/</id>
     <published>2021-02-11T08:21:54.000Z</published>
-    <updated>2021-02-11T08:26:05.637Z</updated>
+    <updated>2021-02-12T05:57:58.082Z</updated>
     
     
       
@@ -49,7 +79,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/</id>
     <published>2021-02-10T15:09:53.000Z</published>
-    <updated>2021-02-11T11:59:37.974Z</updated>
+    <updated>2021-02-12T05:57:58.058Z</updated>
     
     
       
@@ -498,32 +528,6 @@
     
     
     <category term="feign" scheme="http://wvht2y.coding-pages.com/tags/feign/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Using Optional with Jackson</title>
-    <link href="http://wvht2y.coding-pages.com/2019/07/06/using-optional-with-jackson/"/>
-    <id>http://wvht2y.coding-pages.com/2019/07/06/using-optional-with-jackson/</id>
-    <published>2019-07-06T15:06:20.000Z</published>
-    <updated>2019-07-06T15:54:14.990Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在java8的时候，针对NOP异常，提供了Optional的解决方案。但是你了解Jackson序列化含Optional字段的POJO时会发生什么吗？在本文中，将介绍Optional类，然后解释在与Jackson一起使用时可能遇到的一些问题。接下来，</summary>
-        
-      
-    
-    
-    
-    <category term="jackson" scheme="http://wvht2y.coding-pages.com/categories/jackson/"/>
-    
-    
-    <category term="jackson" scheme="http://wvht2y.coding-pages.com/tags/jackson/"/>
     
   </entry>
   
