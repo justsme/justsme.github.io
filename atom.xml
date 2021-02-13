@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-13T07:06:44.766Z</updated>
+  <updated>2021-02-13T10:09:30.436Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis Plus 3.3 —— Mapper CRUD之分页查询</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-3-mapper-crud-zhi-fen-ye-cha-xun/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-3-mapper-crud-zhi-fen-ye-cha-xun/</id>
+    <published>2021-02-13T10:04:23.000Z</published>
+    <updated>2021-02-13T10:09:30.436Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Mybatis plus&lt;/code&gt;自带了分页插件，如果你已经习惯使用 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis Plus 3.2 —— Mapper CRUD之条件构造器</title>
@@ -523,30 +553,6 @@
     
     
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MapStruct ——An annotation processor for generating type-safe bean mappers</title>
-    <link href="http://wvht2y.coding-pages.com/2019/08/10/mapstruct-an-annotation-processor-for-generating-type-safe-bean-mappers/"/>
-    <id>http://wvht2y.coding-pages.com/2019/08/10/mapstruct-an-annotation-processor-for-generating-type-safe-bean-mappers/</id>
-    <published>2019-08-10T15:45:39.000Z</published>
-    <updated>2019-08-10T15:46:08.072Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;bean对象之间的相互映射的工具有不少，比如常见的BeanUtils，dozer，这都基本都是基于反射实现的，但是MapStruct则不同，下面我们就来看看MapStruct的使用方法吧！&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;MapStruc</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
