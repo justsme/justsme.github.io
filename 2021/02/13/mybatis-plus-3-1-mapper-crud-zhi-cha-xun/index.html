@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="SHIV STEP" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="SHIV STEP" type="application/atom+xml">
 </head>
 
 
@@ -509,7 +509,7 @@
                 <blockquote>
 <p>这一章，我们开始一起学习使用Mapper来进行增删改查！</p>
 </blockquote>
-<h4 id="一-前置准备"><a href="#一-前置准备" class="headerlink" title="一. 前置准备"></a>一. 前置准备</h4><p>项目结构:</p>
+<h3 id="一-前置准备"><a href="#一-前置准备" class="headerlink" title="一. 前置准备"></a>一. 前置准备</h3><p>项目结构:</p>
 <pre class="line-numbers language-none"><code class="language-none">.
 ├── build.gradle
 ├── gradle
@@ -532,7 +532,7 @@
     │&nbsp;&nbsp; │&nbsp;&nbsp;                 │&nbsp;&nbsp; ├── BaseEntity.java
     │&nbsp;&nbsp; │&nbsp;&nbsp;                 │&nbsp;&nbsp; └── User.java
     │&nbsp;&nbsp; │&nbsp;&nbsp;                 ├── handler
-    │&nbsp;&nbsp; │&nbsp;&nbsp;                 │&nbsp;&nbsp; ├── MyMetaObjectHandler.java // 该类在上一章能够找到
+    │&nbsp;&nbsp; │&nbsp;&nbsp;                 │&nbsp;&nbsp; ├── MyMetaObjectHandler.java
     │&nbsp;&nbsp; │&nbsp;&nbsp;                 └── mapper
     │&nbsp;&nbsp; │&nbsp;&nbsp;                     └── UserMapper.java
     │&nbsp;&nbsp; └── resources
@@ -548,7 +548,7 @@
                             └── demo
                                 └── UserTests.java
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="1-build-gradle"><a href="#1-build-gradle" class="headerlink" title="1. build.gradle"></a>1. build.gradle</h5><pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">plugins <span class="token punctuation">{</span>
+<h4 id="1-build-gradle"><a href="#1-build-gradle" class="headerlink" title="1. build.gradle"></a>1. build.gradle</h4><pre class="line-numbers language-groovy" data-language="groovy"><code class="language-groovy">plugins <span class="token punctuation">{</span>
     id <span class="token string">'org.springframework.boot'</span> version <span class="token string">'2.3.4.RELEASE'</span>
     id <span class="token string">'io.spring.dependency-management'</span> version <span class="token string">'1.0.10.RELEASE'</span>
     id <span class="token string">'java'</span>
@@ -592,7 +592,7 @@ dependencies <span class="token punctuation">{</span>
 test <span class="token punctuation">{</span>
     <span class="token function">useJUnitPlatform</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="2-application-yml"><a href="#2-application-yml" class="headerlink" title="2. application.yml"></a>2. application.yml</h5><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+<h4 id="2-application-yml"><a href="#2-application-yml" class="headerlink" title="2. application.yml"></a>2. application.yml</h4><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
     <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> com.mysql.cj.jdbc.Driver
     <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>mysql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>3306/demo<span class="token punctuation">?</span>useUnicode=true<span class="token important">&amp;characterEncoding=utf8&amp;serverTimezone=Asia/Shanghai</span>
@@ -609,7 +609,7 @@ test <span class="token punctuation">{</span>
     <span class="token key atrule">db-config</span><span class="token punctuation">:</span>
       <span class="token key atrule">insert-strategy</span><span class="token punctuation">:</span> not_null
       <span class="token key atrule">update-strategy</span><span class="token punctuation">:</span> not_null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="3-sql语句"><a href="#3-sql语句" class="headerlink" title="3. sql语句"></a>3. sql语句</h5><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- mysql 版本 5.7.24</span>
+<h4 id="3-sql语句"><a href="#3-sql语句" class="headerlink" title="3. sql语句"></a>3. sql语句</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- mysql 版本 5.7.24</span>
 
 <span class="token comment">-- 测试表结构</span>
 <span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
@@ -633,10 +633,10 @@ test <span class="token punctuation">{</span>
 <span class="token punctuation">(</span><span class="token string">'Tom'</span><span class="token punctuation">,</span> <span class="token number">28</span><span class="token punctuation">,</span> <span class="token string">'test3@baomidou.com'</span><span class="token punctuation">,</span> <span class="token string">'MAIL'</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">(</span><span class="token string">'Sandy'</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> <span class="token string">'test4@baomidou.com'</span><span class="token punctuation">,</span> <span class="token string">'FEMALE'</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">(</span><span class="token string">'Billie'</span><span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> <span class="token string">'test5@baomidou.com'</span><span class="token punctuation">,</span> <span class="token string">'FEMALE'</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="4-初始数据"><a href="#4-初始数据" class="headerlink" title="4. 初始数据"></a>4. 初始数据</h5><p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210212224757754.png" alt="image-20210212224757754"></p>
-<h5 id="5-UserMapper"><a href="#5-UserMapper" class="headerlink" title="5. UserMapper"></a>5. UserMapper</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token keyword">extends</span> <span class="token class-name">BaseMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
+<h4 id="4-初始数据"><a href="#4-初始数据" class="headerlink" title="4. 初始数据"></a>4. 初始数据</h4><p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210212224757754.png" alt="image-20210212224757754"></p>
+<h4 id="5-UserMapper"><a href="#5-UserMapper" class="headerlink" title="5. UserMapper"></a>5. UserMapper</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token keyword">extends</span> <span class="token class-name">BaseMapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h5 id="6-MyMetaObjectHandler"><a href="#6-MyMetaObjectHandler" class="headerlink" title="6. MyMetaObjectHandler"></a>6. MyMetaObjectHandler</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+<h4 id="6-MyMetaObjectHandler"><a href="#6-MyMetaObjectHandler" class="headerlink" title="6. MyMetaObjectHandler"></a>6. MyMetaObjectHandler</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
  * 自动填充 create_time 和 update_time 字段
  */</span>
 <span class="token annotation punctuation">@Slf4j</span>
@@ -658,7 +658,7 @@ test <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">strictUpdateFill</span><span class="token punctuation">(</span>metaObject<span class="token punctuation">,</span> <span class="token string">"updateTime"</span><span class="token punctuation">,</span>  <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">LocalDateTime</span><span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="7-启动类"><a href="#7-启动类" class="headerlink" title="7. 启动类"></a>7. 启动类</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">cn<span class="token punctuation">.</span>justmr<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>demo</span><span class="token punctuation">;</span>
+<h4 id="7-启动类"><a href="#7-启动类" class="headerlink" title="7. 启动类"></a>7. 启动类</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">cn<span class="token punctuation">.</span>justmr<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>demo</span><span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">MapperScan</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span></span><span class="token class-name">SpringApplication</span><span class="token punctuation">;</span>
@@ -671,9 +671,9 @@ test <span class="token punctuation">{</span>
         <span class="token class-name">SpringApplication</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">DemoApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="二-查询"><a href="#二-查询" class="headerlink" title="二. 查询"></a>二. 查询</h4><p>首先看一下<code>UserMapper</code>实现的<code>BaseMapper</code>的接口：</p>
+<h3 id="二-查询"><a href="#二-查询" class="headerlink" title="二. 查询"></a>二. 查询</h3><p>首先看一下<code>UserMapper</code>实现的<code>BaseMapper</code>的接口：</p>
 <p><img src="https://gitee.com/shiv/md-images/raw/master/blog/BaseMapper.png" alt="BaseMapper"></p>
-<h5 id="1-BaseMapper-selectById"><a href="#1-BaseMapper-selectById" class="headerlink" title="1. BaseMapper#selectById"></a>1. BaseMapper#selectById</h5><blockquote>
+<h4 id="1-BaseMapper-selectById"><a href="#1-BaseMapper-selectById" class="headerlink" title="1. BaseMapper#selectById"></a>1. BaseMapper#selectById</h4><blockquote>
 <p>根据id查询</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">T</span> <span class="token function">selectById</span><span class="token punctuation">(</span><span class="token class-name">Serializable</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
@@ -697,7 +697,7 @@ test <span class="token punctuation">{</span>
 &lt;==    Columns: id, name, age, email, sex, is_delete, create_time, update_time
 &lt;==        Row: 1, Jone, 18, test1@baomidou.com, MAIL, 0, 2021-02-12 22:43:00, 2021-02-12 22:43:00
 &lt;==      Total: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="2-BaseMapper-selectBatchIds"><a href="#2-BaseMapper-selectBatchIds" class="headerlink" title="2. BaseMapper#selectBatchIds"></a>2. BaseMapper#selectBatchIds</h5><blockquote>
+<h4 id="2-BaseMapper-selectBatchIds"><a href="#2-BaseMapper-selectBatchIds" class="headerlink" title="2. BaseMapper#selectBatchIds"></a>2. BaseMapper#selectBatchIds</h4><blockquote>
 <p>idList 不能为 null 以及 empty，否则会报错</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&gt;</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectBatchIds</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token class-name">Constants</span><span class="token punctuation">.</span>COLLECTION<span class="token punctuation">)</span> <span class="token class-name">Collection</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">Serializable</span><span class="token punctuation">&gt;</span></span> idList<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
@@ -714,7 +714,7 @@ test <span class="token punctuation">{</span>
 &lt;==        Row: 1, Jone, 18, test1@baomidou.com, MAIL, 0, 2021-02-12 22:43:00, 2021-02-12 22:43:00
 &lt;==        Row: 2, Jack, 20, test2@baomidou.com, MAIL, 0, 2021-02-12 22:43:00, 2021-02-12 22:43:00
 &lt;==      Total: 2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="3-BaseMapper-selectByMap"><a href="#3-BaseMapper-selectByMap" class="headerlink" title="3. BaseMapper#selectByMap"></a>3. BaseMapper#selectByMap</h5><blockquote>
+<h4 id="3-BaseMapper-selectByMap"><a href="#3-BaseMapper-selectByMap" class="headerlink" title="3. BaseMapper#selectByMap"></a>3. BaseMapper#selectByMap</h4><blockquote>
 <p>查询（根据 columnMap 条件）<br>Params:<br>columnMap – 表字段 map 对象</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token function">selectByMap</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token class-name">Constants</span><span class="token punctuation">.</span>COLUMN_MAP<span class="token punctuation">)</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> columnMap<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
@@ -734,7 +734,7 @@ test <span class="token punctuation">{</span>
 &lt;==        Row: 1, Jone, 18, test1@baomidou.com, MAIL, 0, 2021-02-12 22:43:00, 2021-02-12 22:43:00
 &lt;==      Total: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>注：如果<code>columnMap</code>为<code>null</code>或者<code>empty</code>,则是全量查询</strong></p>
-<h5 id="4-BaseMapper-selectOne"><a href="#4-BaseMapper-selectOne" class="headerlink" title="4. BaseMapper#selectOne"></a>4. BaseMapper#selectOne</h5><blockquote>
+<h4 id="4-BaseMapper-selectOne"><a href="#4-BaseMapper-selectOne" class="headerlink" title="4. BaseMapper#selectOne"></a>4. BaseMapper#selectOne</h4><blockquote>
 <p>根据 entity 条件，查询一条记录<br>Params:<br>queryWrapper – 实体对象封装操作类（可以为 null）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">T</span> <span class="token function">selectOne</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token class-name">Constants</span><span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> <span class="token class-name">Wrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这里出现了一个新的对象<code>Wrapper</code>，我们先看一下这个类的继承实现关系！</p>
@@ -864,7 +864,7 @@ test <span class="token punctuation">{</span>
 &lt;==      Total: 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>总结一下：</strong></p>
 <p>构建<code>Wrapper</code>建议使用<code>Lambda</code>表达式的方式，类型安全！</p>
-<h5 id="5-BaseMapper-selectCount"><a href="#5-BaseMapper-selectCount" class="headerlink" title="5. BaseMapper#selectCount"></a>5. BaseMapper#selectCount</h5><blockquote>
+<h4 id="5-BaseMapper-selectCount"><a href="#5-BaseMapper-selectCount" class="headerlink" title="5. BaseMapper#selectCount"></a>5. BaseMapper#selectCount</h4><blockquote>
 <p>根据 Wrapper 条件，查询总记录数<br>Params:<br>queryWrapper – 实体对象封装操作类（可以为 null）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Integer</span> <span class="token function">selectCount</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token class-name">Constants</span><span class="token punctuation">.</span>WRAPPER<span class="token punctuation">)</span> <span class="token class-name">Wrapper</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> queryWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </blockquote>
@@ -884,10 +884,10 @@ test <span class="token punctuation">{</span>
 &lt;==    Columns: COUNT( * )
 &lt;==        Row: 3
 &lt;==      Total: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h5 id="6-BaseMapper-selectList，BaseMapper-selectMaps，BaseMapper-selectObjs"><a href="#6-BaseMapper-selectList，BaseMapper-selectMaps，BaseMapper-selectObjs" class="headerlink" title="6. BaseMapper#selectList，BaseMapper#selectMaps，BaseMapper#selectObjs"></a>6. BaseMapper#selectList，BaseMapper#selectMaps，BaseMapper#selectObjs</h5><blockquote>
+<h4 id="6-BaseMapper-selectList，BaseMapper-selectMaps，BaseMapper-selectObjs"><a href="#6-BaseMapper-selectList，BaseMapper-selectMaps，BaseMapper-selectObjs" class="headerlink" title="6. BaseMapper#selectList，BaseMapper#selectMaps，BaseMapper#selectObjs"></a>6. BaseMapper#selectList，BaseMapper#selectMaps，BaseMapper#selectObjs</h4><blockquote>
 <p>这些就不一一举例了</p>
 </blockquote>
-<h5 id="7-BaseMapper-selectPage，BaseMapper-selectMapsPage"><a href="#7-BaseMapper-selectPage，BaseMapper-selectMapsPage" class="headerlink" title="7. BaseMapper#selectPage，BaseMapper#selectMapsPage"></a>7. BaseMapper#selectPage，BaseMapper#selectMapsPage</h5><blockquote>
+<h4 id="7-BaseMapper-selectPage，BaseMapper-selectMapsPage"><a href="#7-BaseMapper-selectPage，BaseMapper-selectMapsPage" class="headerlink" title="7. BaseMapper#selectPage，BaseMapper#selectMapsPage"></a>7. BaseMapper#selectPage，BaseMapper#selectMapsPage</h4><blockquote>
 <p>对于分页，后面会单独讲</p>
 </blockquote>
 
@@ -1160,18 +1160,17 @@ test <span class="token punctuation">{</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/">
+                <a href="/2021/02/13/mybatis-plus-3-2-mapper-crud-zhi-tiao-jian-gou-zao-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Mybatis Plus 3.1 —— Mapper CRUD之查询">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Mybatis Plus 3.2 —— Mapper CRUD之条件构造器">
                         
-                        <span class="card-title">Mybatis Plus 3.1 —— Mapper CRUD之查询</span>
+                        <span class="card-title">Mybatis Plus 3.2 —— Mapper CRUD之条件构造器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1181,9 +1180,9 @@ test <span class="token punctuation">{</span>
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-02-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1196,7 +1195,6 @@ test <span class="token punctuation">{</span>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1415,7 +1413,7 @@ test <span class="token punctuation">{</span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.9k</span>&nbsp;字
+                class="white-color">46.9k</span>&nbsp;字
             
             
             
