@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-13T10:09:30.436Z</updated>
+  <updated>2021-02-13T17:11:36.716Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis Plus 4 —— Mapper CRUD之更新</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-4-mapper-crud-zhi-geng-xin/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-4-mapper-crud-zhi-geng-xin/</id>
+    <published>2021-02-13T16:57:29.000Z</published>
+    <updated>2021-02-13T17:11:36.716Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;前几章主要是讲的查询相关的功能，这次我们来说说更新相关的功能！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一-前置准备&quot;&gt;&lt;a href=&quot;#一-前置准备&quot; class=&quot;headerlink&quot; title=&quot;一.</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis Plus 3.3 —— Mapper CRUD之分页查询</title>
@@ -527,32 +559,6 @@
     
     
     <category term="jackson" scheme="http://wvht2y.coding-pages.com/tags/jackson/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring boot配置文件属性转换</title>
-    <link href="http://wvht2y.coding-pages.com/2019/08/17/spring-boot-pei-zhi-wen-jian-shu-xing-zhuan-huan/"/>
-    <id>http://wvht2y.coding-pages.com/2019/08/17/spring-boot-pei-zhi-wen-jian-shu-xing-zhuan-huan/</id>
-    <published>2019-08-17T09:28:52.000Z</published>
-    <updated>2019-08-17T09:32:58.196Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;在我们用Springboot进行开发的时候，我们的很多可配置化的参数会写在配置文件内，然后可以用&lt;code&gt;@ConfigurationProperties</summary>
-        
-      
-    
-    
-    
-    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/categories/spring-boot/"/>
-    
-    
-    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
     
   </entry>
   
