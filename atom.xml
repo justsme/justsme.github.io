@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-14T10:09:25.781Z</updated>
+  <updated>2021-02-14T10:18:36.646Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -21,14 +21,15 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-6-zi-duan-lei-xing-chu-li-qi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-6-zi-duan-lei-xing-chu-li-qi/</id>
     <published>2021-02-14T09:02:08.000Z</published>
-    <updated>2021-02-14T10:09:25.781Z</updated>
+    <updated>2021-02-14T10:18:36.646Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;Mybatis-Plus-6-——-字段类型处理器&quot;&gt;&lt;a href=&quot;#Mybatis-Plus-6-——-字段类型处理器&quot; class=&quot;headerlink&quot; title=&quot;Mybatis Plus 6 —— 字段类型处理器&quot;&gt;&lt;/a&gt;Mybatis</summary>
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;类型处理器，用于 &lt;code&gt;JavaType&lt;/code&gt; 与&lt;code&gt; JdbcType&lt;/code&gt; 之间的转换，用于 &lt;code&gt;PreparedStatement&lt;/code&gt; 设置参数值和从</summary>
         
       
     
@@ -37,9 +38,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -67,9 +68,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -99,9 +100,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -129,9 +130,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -159,9 +160,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -191,9 +192,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -221,9 +222,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -251,9 +252,9 @@
     <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
     
     
-    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
-    
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
     
     <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
     
@@ -292,7 +293,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/</id>
     <published>2021-02-10T15:09:53.000Z</published>
-    <updated>2021-02-12T05:57:58.058Z</updated>
+    <updated>2021-02-14T10:49:14.608Z</updated>
     
     
       
@@ -307,6 +308,8 @@
     
     <category term="spring boot" scheme="http://wvht2y.coding-pages.com/categories/spring-boot/"/>
     
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
     
     <category term="cache" scheme="http://wvht2y.coding-pages.com/tags/cache/"/>
     
@@ -526,7 +529,7 @@
     <link href="http://wvht2y.coding-pages.com/2020/02/22/jian-kong-feign-diao-yong-metrics/"/>
     <id>http://wvht2y.coding-pages.com/2020/02/22/jian-kong-feign-diao-yong-metrics/</id>
     <published>2020-02-22T02:58:59.000Z</published>
-    <updated>2020-02-22T03:57:39.963Z</updated>
+    <updated>2021-02-14T10:35:43.707Z</updated>
     
     
       
@@ -541,9 +544,9 @@
     
     
     
-    <category term="metrics" scheme="http://wvht2y.coding-pages.com/tags/metrics/"/>
+    <category term="feign" scheme="http://wvht2y.coding-pages.com/tags/feign/"/>
     
-    <category term="Feign" scheme="http://wvht2y.coding-pages.com/tags/Feign/"/>
+    <category term="metrics" scheme="http://wvht2y.coding-pages.com/tags/metrics/"/>
     
   </entry>
   
@@ -552,7 +555,7 @@
     <link href="http://wvht2y.coding-pages.com/2020/02/21/springboot-no-suitable-httpmessageconverter-found-for-response/"/>
     <id>http://wvht2y.coding-pages.com/2020/02/21/springboot-no-suitable-httpmessageconverter-found-for-response/</id>
     <published>2020-02-21T06:51:28.000Z</published>
-    <updated>2021-02-12T03:53:36.043Z</updated>
+    <updated>2021-02-14T10:50:20.218Z</updated>
     
     
       
@@ -566,6 +569,10 @@
     
     
     
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/categories/spring-boot/"/>
+    
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
     
   </entry>
   
