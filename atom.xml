@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-13T17:11:36.716Z</updated>
+  <updated>2021-02-14T04:02:50.291Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis Plus 5 —— 通用枚举</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-5-tong-yong-mei-ju/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-5-tong-yong-mei-ju/</id>
+    <published>2021-02-14T03:54:07.000Z</published>
+    <updated>2021-02-14T04:02:50.291Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;对于&lt;code&gt;mybatis&lt;/code&gt;来说，内置了两个枚举转换器分别是：&lt;code&gt;org.apache.ibatis.type.EnumTypeHandler&lt;/code&gt;和&lt;code&gt;org.apache.ibatis.type.Enum</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis Plus 4 —— Mapper CRUD之更新</title>
@@ -531,34 +561,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Jackson LocalDateTime的反序列化问题</title>
-    <link href="http://wvht2y.coding-pages.com/2020/01/05/jackson-localdatetime-de-fan-xu-lie-hua-wen-ti/"/>
-    <id>http://wvht2y.coding-pages.com/2020/01/05/jackson-localdatetime-de-fan-xu-lie-hua-wen-ti/</id>
-    <published>2020-01-04T16:34:27.000Z</published>
-    <updated>2020-01-05T13:35:02.132Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;当我们使用java8的LocalDateTime，LocalDate等接收来自前端请求json的时间字段时，会由于格式问题会导致反序列化失败，这里提供一种全局的解决方案。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;1-示例&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="jackson" scheme="http://wvht2y.coding-pages.com/categories/jackson/"/>
-    
-    
-    <category term="jackson" scheme="http://wvht2y.coding-pages.com/tags/jackson/"/>
     
   </entry>
   
