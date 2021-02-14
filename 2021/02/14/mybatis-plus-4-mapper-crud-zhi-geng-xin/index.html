@@ -824,6 +824,7 @@ test <span class="token punctuation">{</span>
 <pre class="line-numbers language-none"><code class="language-none">==&gt;  Preparing: UPDATE user SET email=? WHERE id=? AND name=?
 ==&gt; Parameters: 44@shiv.com(String), 8(Long), shiv(String)
 &lt;==    Updates: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>注意：</strong><br><strong>这种方式更新，不会自动更新<code>update_time</code>的值，尽管我们设置了<code>update_time</code>的自动填充功能！填充只能填充到entity里</strong></p>
 <h5 id="示例6（避免）"><a href="#示例6（避免）" class="headerlink" title="示例6（避免）"></a>示例6（避免）</h5><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token annotation punctuation">@DisplayName</span><span class="token punctuation">(</span><span class="token string">"更新测试7"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test7</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
