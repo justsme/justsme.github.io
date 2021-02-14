@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-14T04:02:50.291Z</updated>
+  <updated>2021-02-14T09:10:17.830Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis Plus 6 —— 字段类型处理器</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-6-zi-duan-lei-xing-chu-li-qi/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-6-zi-duan-lei-xing-chu-li-qi/</id>
+    <published>2021-02-14T09:02:08.000Z</published>
+    <updated>2021-02-14T09:10:17.830Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Mybatis-Plus-6-——-字段类型处理器&quot;&gt;&lt;a href=&quot;#Mybatis-Plus-6-——-字段类型处理器&quot; class=&quot;headerlink&quot; title=&quot;Mybatis Plus 6 —— 字段类型处理器&quot;&gt;&lt;/a&gt;Mybatis</summary>
+        
+      
+    
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/categories/mybatis-plus/"/>
+    
+    
+    <category term="mybatis plus" scheme="http://wvht2y.coding-pages.com/tags/mybatis-plus/"/>
+    
+    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
+    
+    <category term="mybatis" scheme="http://wvht2y.coding-pages.com/tags/mybatis/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis Plus 5 —— 通用枚举</title>
@@ -532,30 +561,6 @@
         
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;最近在使用&lt;code&gt;springboot&lt;/code&gt;调用第三方接口的时候，出现了这个异常Could not extract response: no suitable HttpMessageConverter found for</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>链接收藏</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/08/lian-jie-shou-cang/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/08/lian-jie-shou-cang/</id>
-    <published>2020-02-08T09:16:17.000Z</published>
-    <updated>2020-02-18T09:20:48.043Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;收藏一些较好的技术链接，整理方便查看&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;一-java基础&quot;&gt;&lt;a href=&quot;#一-java基础&quot; class=&quot;headerlink&quot; title=&quot;一. java基础&quot;&gt;&lt;/a&gt;一.</summary>
         
       
     
