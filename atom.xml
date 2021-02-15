@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-14T10:18:36.646Z</updated>
+  <updated>2021-02-15T05:51:59.613Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JVM相关</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/15/jvm-xiang-guan/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/15/jvm-xiang-guan/</id>
+    <published>2021-02-15T05:49:26.000Z</published>
+    <updated>2021-02-15T05:51:59.613Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;尚硅谷有一套jvm相关的视频，感兴趣的朋友可以看看！这里是根据其中内容做的一些笔记。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;一-jvm参数类型&quot;&gt;&lt;a href=&quot;#一-jvm参数类型&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="虚拟机" scheme="http://wvht2y.coding-pages.com/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+    <category term="虚拟机" scheme="http://wvht2y.coding-pages.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Mybatis Plus 系列6 —— 字段类型处理器</title>
@@ -81,7 +109,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-4-mapper-crud-zhi-geng-xin/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-4-mapper-crud-zhi-geng-xin/</id>
     <published>2021-02-13T16:57:29.000Z</published>
-    <updated>2021-02-14T10:09:11.719Z</updated>
+    <updated>2021-02-14T12:22:34.790Z</updated>
     
     
       
@@ -173,7 +201,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/</id>
     <published>2021-02-12T17:09:53.000Z</published>
-    <updated>2021-02-14T10:08:34.476Z</updated>
+    <updated>2021-02-14T12:22:30.280Z</updated>
     
     
       
@@ -205,7 +233,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-chang-yong-zhu-jie/</id>
     <published>2021-02-12T12:38:47.000Z</published>
-    <updated>2021-02-14T10:07:45.684Z</updated>
+    <updated>2021-02-14T12:22:25.431Z</updated>
     
     
       
@@ -547,32 +575,6 @@
     <category term="feign" scheme="http://wvht2y.coding-pages.com/tags/feign/"/>
     
     <category term="metrics" scheme="http://wvht2y.coding-pages.com/tags/metrics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>springboot: no suitable HttpMessageConverter found for response</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/21/springboot-no-suitable-httpmessageconverter-found-for-response/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/21/springboot-no-suitable-httpmessageconverter-found-for-response/</id>
-    <published>2020-02-21T06:51:28.000Z</published>
-    <updated>2021-02-14T10:50:20.218Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;最近在使用&lt;code&gt;springboot&lt;/code&gt;调用第三方接口的时候，出现了这个异常Could not extract response: no suitable HttpMessageConverter found for</summary>
-        
-      
-    
-    
-    
-    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/categories/spring-boot/"/>
-    
-    
-    <category term="spring boot" scheme="http://wvht2y.coding-pages.com/tags/spring-boot/"/>
     
   </entry>
   
