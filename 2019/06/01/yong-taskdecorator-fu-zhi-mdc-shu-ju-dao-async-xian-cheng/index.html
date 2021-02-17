@@ -493,7 +493,7 @@
 <p>这主要涉及父子线程传值的问题，以及当配置@Async应用线程池时，如果得到MDC数据。参考<a target="_blank" rel="noopener" href="https://moelholm.com/2017/07/24/spring-4-3-using-a-taskdecorator-to-copy-mdc-data-to-async-threads/">原文</a></p>
 </blockquote>
 <p>这篇博文主要展示如何从web线程里复制MDC数据到@Async注解的线程里，我们将会使用一个全新的 Spring Framework 4.3的特性: ThreadPoolTaskExecutor#setTaskDecorator() [set-task-decorator]. 如下图：</p>
-<p><img src="Xnip2018-12-08_15-50-55.jpg"></p>
+<p><img src="https://gitee.com/shiv/md-images/raw/master/blog/Xnip2018-12-08_15-50-55.jpg"></p>
 <p>注意到倒数第一行和第三行：在这个log级别上输出了[随机数]，倒数第三行是在一个web线程里发出的，倒数第一行是在一个用了@Async注解的异步线程里发出的。本质上，MDC数据从web线程中复制到了使用@Async注解的异步线程里中了。想参考原文中的代码，可以前往<a target="_blank" rel="noopener" href="https://github.com/moelholm/smallexamples/tree/master/spring43-async-taskdecorator">github</a>。</p>
 <h2 id="一-代码示例"><a href="#一-代码示例" class="headerlink" title="一. 代码示例"></a>一. 代码示例</h2><p>这个例子基于Spring Boot 2。日志API这里用的是SLF4J和Logback（用了Logger, LoggerFactory和MDC）。</p>
 <p>1 pom.xml</p>

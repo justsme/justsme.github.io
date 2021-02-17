@@ -580,8 +580,7 @@
     <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/api/getDeviceStatus"</span><span class="token punctuation">)</span>
     <span class="token class-name">BiaoBaseResponse</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">DeviceStatusInfo</span><span class="token punctuation">&gt;</span></span> <span class="token function">queryBiaoInfo</span><span class="token punctuation">(</span><span class="token annotation punctuation">@SpringQueryMap</span> <span class="token class-name">DeviceStatusInfoRequest</span> request<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>下图是解决这个issue改变的代码：<br><img src="./Xnip2019-01-06_23-53-28.jpg" alt="1"></p>
-<p>注意，要用该注解，需要升级你的Spring Cloud OpenFeign到新的版本（<code>2.1.0.RC1</code>以及之后的版本）。</p>
+<p>下图是解决这个issue改变的代码：<br><img src="https://gitee.com/shiv/md-images/raw/master/blog/Xnip2019-01-06_23-53-28.jpg"><br>注意，要用该注解，需要升级你的Spring Cloud OpenFeign到新的版本（<code>2.1.0.RC1</code>以及之后的版本）。</p>
 
                 
             </div>

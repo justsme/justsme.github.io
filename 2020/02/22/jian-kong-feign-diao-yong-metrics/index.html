@@ -496,7 +496,7 @@
                 <blockquote>
 <p>我们公司的微服务去年已经开始使用metrics来收集应用运行指标，结合prometheus和grafana来统一收集和可视化。服务间的调用我们是使用Feign来进行调用的，但是发现springboot应用没法收集Feign调用得metrics信息，特此，记录一下怎么收集Feign调用的metrics信息。</p>
 </blockquote>
-<p>首先我们来看一下springboot2.X默认使用的metrics指标工具<a target="_blank" rel="noopener" href="http://micrometer.io/">micrometer</a>,查看它的官方文档，我们发现它对okhttp做了支持，如下：<br><img src="Xnip2020-02-22_11-18-23.jpg"></p>
+<p>首先我们来看一下springboot2.X默认使用的metrics指标工具<a target="_blank" rel="noopener" href="http://micrometer.io/">micrometer</a>,查看它的官方文档，我们发现它对okhttp做了支持，如下：<br><img src="https://gitee.com/shiv/md-images/raw/master/blog/Xnip2020-02-22_11-18-23.jpg"></p>
 <ul>
 <li><a target="_blank" rel="noopener" href="http://micrometer.io/docs/ref/okhttpclient">OkHttpClient Metrics</a></li>
 </ul>
