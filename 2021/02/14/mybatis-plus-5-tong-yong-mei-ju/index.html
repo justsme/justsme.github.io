@@ -512,7 +512,7 @@
 <h3 id="一-默认行为"><a href="#一-默认行为" class="headerlink" title="一. 默认行为"></a>一. 默认行为</h3><blockquote>
 <p>版本 <code>compile "com.baomidou:mybatis-plus-boot-starter:3.4.2"</code></p>
 </blockquote>
-<h3 id="1-application-yml配置如下："><a href="#1-application-yml配置如下：" class="headerlink" title="1. application.yml配置如下："></a>1. application.yml配置如下：</h3><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">mybatis-plus</span><span class="token punctuation">:</span>
+<h4 id="1-application-yml配置如下："><a href="#1-application-yml配置如下：" class="headerlink" title="1. application.yml配置如下："></a>1. application.yml配置如下：</h4><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">mybatis-plus</span><span class="token punctuation">:</span>
   <span class="token key atrule">configuration</span><span class="token punctuation">:</span>
     <span class="token comment"># 开启自动驼峰命名规则（camel case）映射,默认就是true</span>
     <span class="token key atrule">map-underscore-to-camel-case</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
@@ -521,7 +521,7 @@
     <span class="token key atrule">db-config</span><span class="token punctuation">:</span>
       <span class="token key atrule">insert-strategy</span><span class="token punctuation">:</span> not_null
       <span class="token key atrule">update-strategy</span><span class="token punctuation">:</span> not_null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="2-实体"><a href="#2-实体" class="headerlink" title="2. 实体"></a>2. 实体</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
+<h4 id="2-实体"><a href="#2-实体" class="headerlink" title="2. 实体"></a>2. 实体</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@ToString</span><span class="token punctuation">(</span>callSuper <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@EqualsAndHashCode</span><span class="token punctuation">(</span>callSuper <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">BaseEntity</span> <span class="token punctuation">{</span>
@@ -560,7 +560,7 @@
     <span class="token keyword">private</span> <span class="token class-name">LocalDateTime</span> updateTime<span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="3-枚举"><a href="#3-枚举" class="headerlink" title="3. 枚举"></a>3. 枚举</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
+<h4 id="3-枚举"><a href="#3-枚举" class="headerlink" title="3. 枚举"></a>3. 枚举</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
 <span class="token keyword">public</span> <span class="token keyword">enum</span> <span class="token class-name">SexEnum</span> <span class="token punctuation">{</span>
     <span class="token comment">// code 定义为10，20是为了和EnumOrdinalTypeHandler效果区分开来</span>
@@ -569,7 +569,7 @@
 
     <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Integer</span> code<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<h4 id="4-测试"><a href="#4-测试" class="headerlink" title="4. 测试"></a>4. 测试</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testInsert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   user<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"shiv"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
