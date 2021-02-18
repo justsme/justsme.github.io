@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-15T06:05:01.032Z</updated>
+  <updated>2021-02-18T13:07:46.218Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入理解java虚拟机——第四章笔记</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/18/shen-ru-li-jie-java-xu-ni-ji-di-si-zhang-bi-ji/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/18/shen-ru-li-jie-java-xu-ni-ji-di-si-zhang-bi-ji/</id>
+    <published>2021-02-18T13:06:59.000Z</published>
+    <updated>2021-02-18T13:07:46.218Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;虚拟机性能监控、故障处理工具&quot;&gt;&lt;a href=&quot;#虚拟机性能监控、故障处理工具&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="虚拟机" scheme="http://wvht2y.coding-pages.com/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+    <category term="虚拟机" scheme="http://wvht2y.coding-pages.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>JVM笔记</title>
@@ -549,32 +574,6 @@
     
     
     <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>监控Feign调用metrics</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/22/jian-kong-feign-diao-yong-metrics/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/22/jian-kong-feign-diao-yong-metrics/</id>
-    <published>2020-02-22T02:58:59.000Z</published>
-    <updated>2021-02-17T14:03:44.762Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;我们公司的微服务去年已经开始使用metrics来收集应用运行指标，结合prometheus和grafana来统一收集和可视化。服务间的调用我们是使用Feign来进行调用的，但是发现springboot应用没法收集Feign调用得metrics信息，</summary>
-        
-      
-    
-    
-    
-    
-    <category term="feign" scheme="http://wvht2y.coding-pages.com/tags/feign/"/>
-    
-    <category term="metrics" scheme="http://wvht2y.coding-pages.com/tags/metrics/"/>
     
   </entry>
   
