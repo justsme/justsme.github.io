@@ -586,7 +586,7 @@
       <link href="2020/02/08/lian-jie-shou-cang/"/>
       <url>2020/02/08/lian-jie-shou-cang/</url>
       
-        <content type="html"><![CDATA[<blockquote><p>收藏一些较好的技术链接，整理方便查看</p></blockquote><h3 id="一-java基础"><a href="#一-java基础" class="headerlink" title="一. java基础"></a>一. java基础</h3><ul><li><a href="https://www.toutiao.com/i6682990241403372035/?timestamp=1581152961&amp;app=news_article&amp;group_id=6682990241403372035&amp;req_id=2020020817092101012902702013F4CE16">java基础</a></li><li><a href="https://www.toutiao.com/i6646348468807795214/?timestamp=1581153011&amp;app=news_article&amp;group_id=6646348468807795214&amp;req_id=202002081710110101310760531978D4E6">java异常</a></li><li><a href="https://www.toutiao.com/i6673515997896376844/?timestamp=1581153031&amp;app=news_article&amp;group_id=6673515997896376844&amp;req_id=2020020817103101012903509107F6019A">java多线程</a></li><li><a href="https://www.toutiao.com/a6682830757519426055/?timestamp=1581153064&amp;app=news_article&amp;group_id=6682830757519426055&amp;req_id=2020020817110401012903514414EEC039">java原子操作</a></li></ul><h3 id="二-reactor"><a href="#二-reactor" class="headerlink" title="二. reactor"></a>二. reactor</h3><ul><li><a href="https://projectreactor.io/">project reactor官网</a></li><li><a href="https://blog.csdn.net/get_set/article/details/79466657">响应式Spring的道法术器（Spring WebFlux 教程）</a></li></ul>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>收藏一些较好的技术链接，整理方便查看</p></blockquote><h3 id="一-java基础"><a href="#一-java基础" class="headerlink" title="一. java基础"></a>一. java基础</h3><ul><li><a href="https://www.toutiao.com/i6682990241403372035/?timestamp=1581152961&amp;app=news_article&amp;group_id=6682990241403372035&amp;req_id=2020020817092101012902702013F4CE16">java基础</a></li><li><a href="https://www.toutiao.com/i6646348468807795214/?timestamp=1581153011&amp;app=news_article&amp;group_id=6646348468807795214&amp;req_id=202002081710110101310760531978D4E6">java异常</a></li><li><a href="https://www.toutiao.com/i6673515997896376844/?timestamp=1581153031&amp;app=news_article&amp;group_id=6673515997896376844&amp;req_id=2020020817103101012903509107F6019A">java多线程</a></li><li><a href="https://www.toutiao.com/a6682830757519426055/?timestamp=1581153064&amp;app=news_article&amp;group_id=6682830757519426055&amp;req_id=2020020817110401012903514414EEC039">java原子操作</a></li><li><a href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">java线程池实现原理及其在美团业务中的实践</a></li></ul><h3 id="二-reactor"><a href="#二-reactor" class="headerlink" title="二. reactor"></a>二. reactor</h3><ul><li><a href="https://projectreactor.io/">project reactor官网</a></li><li><a href="https://blog.csdn.net/get_set/article/details/79466657">响应式Spring的道法术器（Spring WebFlux 教程）</a></li></ul>]]></content>
       
       
       
@@ -832,6 +832,14 @@
       </categories>
       
       
+        <tags>
+            
+            <tag> idea </tag>
+            
+            <tag> maven </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -926,9 +934,9 @@
             
             <tag> java8 </tag>
             
-            <tag> java stream </tag>
-            
             <tag> idea </tag>
+            
+            <tag> java stream </tag>
             
         </tags>
       
