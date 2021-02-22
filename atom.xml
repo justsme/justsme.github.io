@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-18T13:07:46.218Z</updated>
+  <updated>2021-02-22T07:20:33.089Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在注解中使用方法参数值</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/22/zai-zhu-jie-zhong-shi-yong-fang-fa-can-shu-zhi/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/22/zai-zhu-jie-zhong-shi-yong-fang-fa-can-shu-zhi/</id>
+    <published>2021-02-22T07:14:47.000Z</published>
+    <updated>2021-02-22T07:20:33.089Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;当注解使用在方法上时，注解里怎么能够拿到方法上的参数值呢？如果你使用过&lt;a href=&quot;https://spring.io/guides/gs/caching/&quot;&gt;spring cache&lt;/a&gt;就知道，我们可以使用&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="annotation" scheme="http://wvht2y.coding-pages.com/categories/annotation/"/>
+    
+    
+    <category term="annotation" scheme="http://wvht2y.coding-pages.com/tags/annotation/"/>
+    
+    <category term="spel" scheme="http://wvht2y.coding-pages.com/tags/spel/"/>
+    
+  </entry>
   
   <entry>
     <title>深入理解java虚拟机——第四章笔记</title>
@@ -540,31 +568,6 @@
         
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;从SpringMvc的中心处理器&lt;code&gt;DispatcherServlet&lt;/code&gt;开始说起。源码主要是基于&lt;code&gt;jdk1.8&lt;/code&gt;,&lt;code&gt;springboot</summary>
-        
-      
-    
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/categories/SpringMvc/"/>
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMvc源码分析1</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/24/springmvc-yuan-ma-fen-xi-1/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/24/springmvc-yuan-ma-fen-xi-1/</id>
-    <published>2020-02-24T03:56:45.000Z</published>
-    <updated>2020-02-24T04:14:09.047Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;SpringMvc源码分析1&quot;&gt;&lt;a href=&quot;#SpringMvc源码分析1&quot; class=&quot;headerlink&quot;</summary>
         
       
     
