@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-22T09:55:10.401Z</updated>
+  <updated>2021-02-22T14:17:23.179Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/22/zai-zhu-jie-zhong-shi-yong-fang-fa-can-shu-zhi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/22/zai-zhu-jie-zhong-shi-yong-fang-fa-can-shu-zhi/</id>
     <published>2021-02-22T07:14:47.000Z</published>
-    <updated>2021-02-22T09:55:10.401Z</updated>
+    <updated>2021-02-22T14:17:23.179Z</updated>
     
     
       
@@ -40,7 +40,7 @@
     
     <category term="annotation" scheme="http://wvht2y.coding-pages.com/tags/annotation/"/>
     
-    <category term="spel" scheme="http://wvht2y.coding-pages.com/tags/spel/"/>
+    <category term="SpEL" scheme="http://wvht2y.coding-pages.com/tags/SpEL/"/>
     
   </entry>
   
@@ -102,7 +102,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-6-zi-duan-lei-xing-chu-li-qi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-6-zi-duan-lei-xing-chu-li-qi/</id>
     <published>2021-02-14T09:02:08.000Z</published>
-    <updated>2021-02-14T10:18:36.646Z</updated>
+    <updated>2021-02-22T14:59:07.980Z</updated>
     
     
       
@@ -162,7 +162,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-4-mapper-crud-zhi-geng-xin/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/14/mybatis-plus-4-mapper-crud-zhi-geng-xin/</id>
     <published>2021-02-13T16:57:29.000Z</published>
-    <updated>2021-02-14T12:22:34.790Z</updated>
+    <updated>2021-02-22T14:59:08.060Z</updated>
     
     
       
@@ -254,7 +254,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/13/mybatis-plus-3-1-mapper-crud-zhi-cha-xun/</id>
     <published>2021-02-12T17:09:53.000Z</published>
-    <updated>2021-02-14T12:22:30.280Z</updated>
+    <updated>2021-02-22T14:59:08.080Z</updated>
     
     
       
@@ -316,7 +316,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/12/mybatis-plus-qi-bu/</id>
     <published>2021-02-12T06:30:07.000Z</published>
-    <updated>2021-02-14T10:07:44.668Z</updated>
+    <updated>2021-02-22T14:59:07.963Z</updated>
     
     
       
@@ -346,7 +346,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/11/shou-ji-xian-cheng-chi-de-metrics-xin-xi/</id>
     <published>2021-02-11T08:21:54.000Z</published>
-    <updated>2021-02-12T05:57:58.082Z</updated>
+    <updated>2021-02-22T14:59:08.074Z</updated>
     
     
       
@@ -374,7 +374,7 @@
     <link href="http://wvht2y.coding-pages.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/"/>
     <id>http://wvht2y.coding-pages.com/2021/02/10/spring-boot-spring-cache-redis-huan-cun-shi-yong-fang-shi/</id>
     <published>2021-02-10T15:09:53.000Z</published>
-    <updated>2021-02-14T10:49:14.608Z</updated>
+    <updated>2021-02-22T14:59:08.066Z</updated>
     
     
       

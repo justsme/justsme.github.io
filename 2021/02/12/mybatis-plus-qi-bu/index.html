@@ -603,7 +603,6 @@ dependencies <span class="token punctuation">{</span>
     <span class="token comment">// 引入mybatis plus</span>
     compile <span class="token string gstring">"com.baomidou:mybatis-plus-boot-starter:<span class="token expression"><span class="token punctuation">$</span><span class="token punctuation">{</span>mybaitsPlusVersion<span class="token punctuation">}</span></span>"</span>
     annotationProcessor <span class="token string">'org.projectlombok:lombok'</span>
-    testAnnotationProcessor <span class="token string">'org.projectlombok:lombok'</span>
     <span class="token function">testImplementation</span><span class="token punctuation">(</span><span class="token string">'org.springframework.boot:spring-boot-starter-test'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         exclude group<span class="token punctuation">:</span> <span class="token string">'org.junit.vintage'</span><span class="token punctuation">,</span> module<span class="token punctuation">:</span> <span class="token string">'junit-vintage-engine'</span>
     <span class="token punctuation">}</span>
@@ -613,7 +612,7 @@ dependencies <span class="token punctuation">{</span>
 test <span class="token punctuation">{</span>
     <span class="token function">useJUnitPlatform</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="2-application-yml"><a href="#2-application-yml" class="headerlink" title="2. application.yml"></a>2. application.yml</h5><pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
     <span class="token key atrule">driver-class-name</span><span class="token punctuation">:</span> org.h2.Driver

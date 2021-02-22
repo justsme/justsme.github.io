@@ -438,8 +438,8 @@
                                 <span class="chip bg-color">annotation</span>
                             </a>
                         
-                            <a href="/tags/spel/">
-                                <span class="chip bg-color">spel</span>
+                            <a href="/tags/SpEL/">
+                                <span class="chip bg-color">SpEL</span>
                             </a>
                         
                     </div>
@@ -472,7 +472,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    972
+                    986
                 </div>
                 
 
@@ -572,12 +572,15 @@
         <span class="token class-name">String</span> lockKey <span class="token operator">=</span> expression<span class="token punctuation">.</span><span class="token function">getValue</span><span class="token punctuation">(</span>context<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">hasLength</span><span class="token punctuation">(</span>lockKey<span class="token punctuation">,</span> <span class="token string">"lockKey不能为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+        <span class="token comment">// 加分布式锁</span>
         <span class="token class-name">Lock</span> obtain <span class="token operator">=</span> redisLockRegistry<span class="token punctuation">.</span><span class="token function">obtain</span><span class="token punctuation">(</span>lockKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
         log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"开始获取锁: {}"</span><span class="token punctuation">,</span> lockKey<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>obtain<span class="token punctuation">.</span><span class="token function">tryLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 执行业务逻辑</span>
                 <span class="token keyword">return</span> proceedingJoinPoint<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 释放`锁</span>
                 obtain<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
@@ -586,7 +589,7 @@
         <span class="token punctuation">}</span>
 
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="拦截方法"><a href="#拦截方法" class="headerlink" title="拦截方法"></a>拦截方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DistributedLock</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token string">"#name"</span><span class="token punctuation">)</span> <span class="token comment">// 使用 spel 表达式</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">lockTest</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">{</span>
   log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"==== 执行业务逻辑开始 ===="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -668,8 +671,8 @@
                                     <span class="chip bg-color">annotation</span>
                                 </a>
                             
-                                <a href="/tags/spel/">
-                                    <span class="chip bg-color">spel</span>
+                                <a href="/tags/SpEL/">
+                                    <span class="chip bg-color">SpEL</span>
                                 </a>
                             
                         </div>
@@ -910,8 +913,8 @@
                         <span class="chip bg-color">annotation</span>
                     </a>
                     
-                    <a href="/tags/spel/">
-                        <span class="chip bg-color">spel</span>
+                    <a href="/tags/SpEL/">
+                        <span class="chip bg-color">SpEL</span>
                     </a>
                     
                 </div>
