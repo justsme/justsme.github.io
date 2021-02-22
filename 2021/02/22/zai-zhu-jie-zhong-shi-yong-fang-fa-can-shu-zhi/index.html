@@ -472,7 +472,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    966
+                    972
                 </div>
                 
 
@@ -587,7 +587,7 @@
 
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="拦截方法"><a href="#拦截方法" class="headerlink" title="拦截方法"></a>拦截方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DistributedLock</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token string">"#name"</span><span class="token punctuation">)</span>
+<h3 id="拦截方法"><a href="#拦截方法" class="headerlink" title="拦截方法"></a>拦截方法</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@DistributedLock</span><span class="token punctuation">(</span>key <span class="token operator">=</span> <span class="token string">"#name"</span><span class="token punctuation">)</span> <span class="token comment">// 使用 spel 表达式</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">lockTest</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">InterruptedException</span> <span class="token punctuation">{</span>
   log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"==== 执行业务逻辑开始 ===="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span>SECONDS<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
