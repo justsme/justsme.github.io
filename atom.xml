@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-22T14:17:23.179Z</updated>
+  <updated>2021-02-23T08:13:17.710Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpEL表达式</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/23/spel-biao-da-shi/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/23/spel-biao-da-shi/</id>
+    <published>2021-02-23T08:11:41.000Z</published>
+    <updated>2021-02-23T08:13:17.710Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Spring表达式语言（简称“ SpEL”）是一种功能强大的表达式语言，支持在运行时查询和操作对象图。语言语法类似于Unified</summary>
+        
+      
+    
+    
+    
+    <category term="SpEL" scheme="http://wvht2y.coding-pages.com/categories/SpEL/"/>
+    
+    
+    <category term="SpEL" scheme="http://wvht2y.coding-pages.com/tags/SpEL/"/>
+    
+  </entry>
   
   <entry>
     <title>在注解中使用方法参数值</title>
@@ -542,32 +568,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;SpringMvc源码分析3——HandlerMapping&quot;&gt;&lt;a href=&quot;#SpringMvc源码分析3——HandlerMapping&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/categories/SpringMvc/"/>
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMvc源码分析2——DispatcherServlet</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/24/springmvc-yuan-ma-fen-xi-2-dispatcherservlet/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/24/springmvc-yuan-ma-fen-xi-2-dispatcherservlet/</id>
-    <published>2020-02-24T08:29:47.000Z</published>
-    <updated>2020-02-26T16:03:08.909Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;从SpringMvc的中心处理器&lt;code&gt;DispatcherServlet&lt;/code&gt;开始说起。源码主要是基于&lt;code&gt;jdk1.8&lt;/code&gt;,&lt;code&gt;springboot</summary>
         
       
     
