@@ -472,7 +472,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    989
+                    995
                 </div>
                 
 
@@ -553,7 +553,7 @@
 
     <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ParameterNameDiscoverer</span> parameterNameDiscoverer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultParameterNameDiscoverer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"@annotation(distributedLock)"</span><span class="token punctuation">,</span> argNames <span class="token operator">=</span> <span class="token string">"distributedLock"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"within(com.example.demo20201212..*) &amp;&amp; @annotation(distributedLock)"</span><span class="token punctuation">,</span> argNames <span class="token operator">=</span> <span class="token string">"distributedLock"</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">distributedLockAround</span><span class="token punctuation">(</span><span class="token class-name">ProceedingJoinPoint</span> proceedingJoinPoint<span class="token punctuation">,</span> <span class="token class-name">DistributedLock</span> distributedLock<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">{</span>
         <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">hasLength</span><span class="token punctuation">(</span>distributedLock<span class="token punctuation">.</span><span class="token function">key</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"key不能为空"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">// 获取方法参数</span>
