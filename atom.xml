@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-23T09:55:24.994Z</updated>
+  <updated>2021-02-26T15:29:23.587Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用Spring面向切面编程</title>
+    <link href="http://wvht2y.coding-pages.com/2021/02/26/shi-yong-spring-mian-xiang-qie-mian-bian-cheng/"/>
+    <id>http://wvht2y.coding-pages.com/2021/02/26/shi-yong-spring-mian-xiang-qie-mian-bian-cheng/</id>
+    <published>2021-02-26T01:30:06.000Z</published>
+    <updated>2021-02-26T15:29:23.587Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;面向切面编程（AOP）通过提供另一种思考程序结构的方式来补充面向对象的编程（OOP）。OOP中模块化的关键单元是类，而在AOP中模块化是切面。我们知道，使用OOP有一些弊端，当需要为多个不具备继承关系的对象引入同一个公共行为时，例如日志，安全检测等，我们只有在每个对象里引用</summary>
+        
+      
+    
+    
+    
+    <category term="Aop" scheme="http://wvht2y.coding-pages.com/categories/Aop/"/>
+    
+    
+    <category term="Aop" scheme="http://wvht2y.coding-pages.com/tags/Aop/"/>
+    
+  </entry>
   
   <entry>
     <title>SpEL表达式</title>
@@ -543,31 +568,6 @@
         
     <summary type="html">&lt;h3 id=&quot;一-准备&quot;&gt;&lt;a href=&quot;#一-准备&quot; class=&quot;headerlink&quot; title=&quot;一. 准备&quot;&gt;&lt;/a&gt;一. 准备&lt;/h3&gt;&lt;p&gt;接着上一篇，我们暴露的接口:&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-java&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/categories/SpringMvc/"/>
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMvc源码分析3——HandlerMapping</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-3-handlermapping/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-3-handlermapping/</id>
-    <published>2020-02-24T16:10:01.000Z</published>
-    <updated>2020-02-24T16:13:02.469Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;SpringMvc源码分析3——HandlerMapping&quot;&gt;&lt;a href=&quot;#SpringMvc源码分析3——HandlerMapping&quot; class=&quot;headerlink&quot;</summary>
         
       
     
