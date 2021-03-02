@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-02-26T15:29:23.587Z</updated>
+  <updated>2021-03-02T07:22:50.184Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Spring AOP APIs</title>
+    <link href="http://wvht2y.coding-pages.com/2021/03/01/spring-aop-apis/"/>
+    <id>http://wvht2y.coding-pages.com/2021/03/01/spring-aop-apis/</id>
+    <published>2021-03-01T07:11:33.000Z</published>
+    <updated>2021-03-02T07:22:50.184Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;a href=&quot;/2021/02/26/shi-yong-spring-mian-xiang-qie-mian-bian-cheng/&quot; title=&quot;上一章&quot;&gt;上一章&lt;/a&gt;描述了Spring对带有 @Aspectj 和 schema-based</summary>
+        
+      
+    
+    
+    
+    <category term="Aop" scheme="http://wvht2y.coding-pages.com/categories/Aop/"/>
+    
+    
+    <category term="Aop" scheme="http://wvht2y.coding-pages.com/tags/Aop/"/>
+    
+  </entry>
   
   <entry>
     <title>使用Spring面向切面编程</title>
@@ -534,32 +560,6 @@
     <id>http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-2-handleradapter/</id>
     <published>2020-02-25T10:27:12.000Z</published>
     <updated>2020-02-25T10:41:11.263Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;一-准备&quot;&gt;&lt;a href=&quot;#一-准备&quot; class=&quot;headerlink&quot; title=&quot;一. 准备&quot;&gt;&lt;/a&gt;一. 准备&lt;/h3&gt;&lt;p&gt;接着上一篇，我们暴露的接口:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-java&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/categories/SpringMvc/"/>
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMvc源码分析4.1——HandlerAdapter</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-1-handleradapter/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-1-handleradapter/</id>
-    <published>2020-02-25T05:15:05.000Z</published>
-    <updated>2020-02-25T05:18:52.570Z</updated>
     
     
       
