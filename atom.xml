@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-03-02T07:22:50.184Z</updated>
+  <updated>2021-03-15T01:21:36.909Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深入理解java虚拟机——第七章笔记</title>
+    <link href="http://wvht2y.coding-pages.com/2021/03/15/shen-ru-li-jie-java-xu-ni-ji-di-qi-zhang-bi-ji/"/>
+    <id>http://wvht2y.coding-pages.com/2021/03/15/shen-ru-li-jie-java-xu-ni-ji-di-qi-zhang-bi-ji/</id>
+    <published>2021-03-15T01:20:52.000Z</published>
+    <updated>2021-03-15T01:21:36.909Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;Java&lt;/code&gt;虚拟机把描述类的数据从&lt;code&gt;Class&lt;/code&gt;文件加载到内存，并对数据进行校验，转换解析和初始化，最终形成可以被虚拟机直接使用的&lt;code&gt;Java&lt;/code&gt;类型，这个过程被称作虚拟机的类加载机制。&lt;/p&gt;
+&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="虚拟机" scheme="http://wvht2y.coding-pages.com/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+    
+    <category term="虚拟机" scheme="http://wvht2y.coding-pages.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Spring AOP APIs</title>
@@ -542,32 +568,6 @@
         
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt; 上一节&lt;a href=&quot;#&quot;&gt;Post not found: SpringMvc源码分析4.2——HandlerAdapter</summary>
-        
-      
-    
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/categories/SpringMvc/"/>
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMvc源码分析4.2——HandlerAdapter</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-2-handleradapter/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/25/springmvc-yuan-ma-fen-xi-4-2-handleradapter/</id>
-    <published>2020-02-25T10:27:12.000Z</published>
-    <updated>2020-02-25T10:41:11.263Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;一-准备&quot;&gt;&lt;a href=&quot;#一-准备&quot; class=&quot;headerlink&quot; title=&quot;一. 准备&quot;&gt;&lt;/a&gt;一. 准备&lt;/h3&gt;&lt;p&gt;接着上一篇，我们暴露的接口:&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-java&quot;</summary>
         
       
     
