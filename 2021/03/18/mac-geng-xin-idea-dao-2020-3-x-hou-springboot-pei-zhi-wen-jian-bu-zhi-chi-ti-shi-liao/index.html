@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="SDKMAN——软件开发工具管理器, SHIV STEP">
+    <meta name="keywords" content="mac更新idea到2020.3.x后，springboot配置文件不支持提示了, SHIV STEP">
     <meta name="description" content="java学习记录">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>SDKMAN——软件开发工具管理器 | SHIV STEP</title>
+    <title>mac更新idea到2020.3.x后，springboot配置文件不支持提示了 | SHIV STEP</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -313,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">SDKMAN——软件开发工具管理器</h1>
+                    <h1 class="description center-align post-title">mac更新idea到2020.3.x后，springboot配置文件不支持提示了</h1>
                 </div>
             </div>
         </div>
@@ -434,8 +434,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SDKMAN/">
-                                <span class="chip bg-color">SDKMAN</span>
+                            <a href="/tags/idea/">
+                                <span class="chip bg-color">idea</span>
                             </a>
                         
                     </div>
@@ -446,8 +446,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/SDKMAN/" class="post-category">
-                                SDKMAN
+                            <a href="/categories/idea/" class="post-category">
+                                idea
                             </a>
                         
                     </div>
@@ -459,7 +459,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-13
+                    2021-03-18
                 </div>
                 
 
@@ -468,14 +468,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    158
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -499,168 +499,14 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>这个工具是在大多数基于Unix的系统上管理多个软件开发工具包的并行版本的工具。它提供了一个方便的命令行接口(CLI)和API，用于安装、切换、删除和列出候选对象，它的前身是Groovy环境管理器GVM，其灵感来自Ruby社区广泛使用的非常有用的RVM和rbenv工具。</p>
+<p>mac更新idea到新的版本后，发现springboot配置文件不支持提示了，并不是什么springboot插件没装等等。这里记录一下解决方法。</p>
 </blockquote>
-<h2 id="一-特点"><a href="#一-特点" class="headerlink" title="一. 特点"></a><strong>一. 特点</strong></h2><p><img src="WX20181020-004138@2x.png"></p>
-<h2 id="二-安装"><a href="#二-安装" class="headerlink" title="二. 安装"></a><strong>二. 安装</strong></h2><ol>
-<li><strong>针对类unix平台</strong></li>
-</ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># first</span>
-$ <span class="token function">curl</span> -s <span class="token string">"https://get.sdkman.io"</span> <span class="token operator">|</span> <span class="token function">bash</span>
-<span class="token comment"># next</span>
-$ <span class="token builtin class-name">source</span> <span class="token string">"<span class="token environment constant">$HOME</span>/.sdkman/bin/sdkman-init.sh"</span>
-<span class="token comment"># lastly ensure that installation succeeded</span>
-$ sdk version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如果安装成功，则终端显示：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">SDKMAN <span class="token number">5.7</span>.3+337<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="2">
-<li><strong>windows安装</strong></li>
-</ol>
-<p>请注意，由于SDKMAN是在bash中编写的，因此它需要一个bash环境。SDKMAN不能直接安装在Windows上，需要Cygwin或MSYS+MinGW。</p>
-<p><a target="_blank" rel="noopener" href="https://sdkman.io/install">参考官网说明</a></p>
-<h2 id="三-卸载"><a href="#三-卸载" class="headerlink" title="三. 卸载"></a><strong>三. 卸载</strong></h2><p>使用命令：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">tar</span> zcvf ~/sdkman-backup_<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%F-%kh%M<span class="token variable">)</span></span>.tar.gz -C ~/ .sdkman
-$ <span class="token function">rm</span> -rf ~/.sdkman<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="四-使用"><a href="#四-使用" class="headerlink" title="四. 使用"></a><strong>四. 使用</strong></h2><blockquote>
-<p>支持安装的开发工具包</p>
-</blockquote>
-<pre class="line-numbers language-none"><code class="language-none">Available SDKs
-Ant
-AsciidoctorJ
-Bpipe
-Ceylon
-CRaSH
-CUBA CLI
-CXF
-Gaiden
-Glide
-Gradle
-Grails
-Groovy
-GroovyServ
-Infrastructor
-Java
-JBake
-Kotlin
-kscript
-Lazybones
-Leiningen
-Maven
-Micronaut
-sbt
-Scala
-Spark
-Spring Boot
-Sshoogr
-Vert.x
-VisualVM<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li><strong>安装</strong></li>
-</ol>
-<ul>
-<li>安装最近稳定版本，例如安装<code> Java JDK</code></li>
-</ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ sdk <span class="token function">install</span> java<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li>安装特定版本</li>
-</ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ sdk <span class="token function">install</span> java <span class="token number">10.0</span>.2-oracle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>版本可以通过 <code>sdk list java</code>获取</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ sdk list java
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-Available Java Versions
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-     <span class="token number">12</span>.ea.15-open
-     <span class="token number">11.0</span>.1-open
-     <span class="token number">10.0</span>.2-zulu
-     <span class="token number">10.0</span>.2-open
-     <span class="token number">10.0</span>.2-oracle
-     <span class="token number">9.0</span>.7-zulu
-     <span class="token number">9.0</span>.4-open
-     <span class="token number">8.0</span>.191-oracle
-     <span class="token number">8.0</span>.181-zulu
-     <span class="token number">7.0</span>.181-zulu
-     <span class="token number">1.0</span>.0-rc7-graal
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-+ - <span class="token builtin class-name">local</span> version 
-* - installed
-<span class="token operator">&gt;</span> - currently <span class="token keyword">in</span> use<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>注：命令<code>sdk list</code>可以列出所有可以安装sdk</strong></p>
-<ul>
-<li>安装本地版本</li>
-</ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 官网栗子</span>
-$ sdk <span class="token function">install</span> groovy <span class="token number">3.0</span>.0-SNAPSHOT /path/to/groovy-3.0.0-SNAPSHOT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>例如，我本地已经安装了Java8版本，我可以这样操作(mac系统)：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ sdk <span class="token function">install</span> java java8 /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 查看安装结果</span>
-sdk list java
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-Available Java Versions
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-   + java8
-     <span class="token number">12</span>.ea.15-open
-     <span class="token number">11.0</span>.1-open
-     <span class="token number">10.0</span>.2-zulu
-     <span class="token number">10.0</span>.2-open
- <span class="token operator">&gt;</span> * <span class="token number">10.0</span>.2-oracle
-     <span class="token number">9.0</span>.7-zulu
-     <span class="token number">9.0</span>.4-open
-     <span class="token number">8.0</span>.191-oracle
-     <span class="token number">8.0</span>.181-zulu
-     <span class="token number">7.0</span>.181-zulu
-     <span class="token number">1.0</span>.0-rc7-graal
-<span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">=</span>
-+ - <span class="token builtin class-name">local</span> version
-* - installed
-<span class="token operator">&gt;</span> - currently <span class="token keyword">in</span> use<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 查看版本</span>
-$ java -version
-java version <span class="token string">"10.0.2"</span> <span class="token number">2018</span>-07-17
-Java<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime Environment <span class="token number">18.3</span> <span class="token punctuation">(</span>build <span class="token number">10.0</span>.2+13<span class="token punctuation">)</span>
-Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span>-Bit Server VM <span class="token number">18.3</span> <span class="token punctuation">(</span>build <span class="token number">10.0</span>.2+13, mixed mode<span class="token punctuation">)</span>
-
-$ sdk use java java8
-Using java version java8 <span class="token keyword">in</span> this shell.
-$ java -version
-java version <span class="token string">"1.8.0_181"</span>
-Java<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime Environment <span class="token punctuation">(</span>build <span class="token number">1.8</span>.0_181-b13<span class="token punctuation">)</span>
-Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> <span class="token number">64</span>-Bit Server VM <span class="token punctuation">(</span>build <span class="token number">25.181</span>-b13, mixed mode<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
-<li><strong>移除安装的版本</strong></li>
-</ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sdk uninstall java <span class="token number">10.0</span>.2-oracle<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ol start="3">
-<li><strong>选择版本</strong></li>
-</ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 重要的是要意识到这只会切换当前shell的候选版本。要使此更改永久性，请使用默认命令。</span>
-sdk use java <span class="token number">8.0</span>.191-oracle<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol start="4">
-<li><strong>默认版本</strong></li>
-</ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 这将确保所有后续shell都将从8.0.191-oracle版本开始使用。</span>
-sdk default java <span class="token number">8.0</span>.191-oracle<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<ol start="5">
-<li><strong>More操作参考<a target="_blank" rel="noopener" href="https://sdkman.io/">官网</a></strong></li>
-</ol>
-<h2 id="五-原理"><a href="#五-原理" class="headerlink" title="五. 原理"></a>五. <strong>原理</strong></h2><p>查看sdkman安装目录结构(默认在<code>~/.sdkman</code>下)</p>
-<p><img src="Xnip2018-10-20_12-15-25.jpg"></p>
-<p>sdkman采用一系列脚本来注册sdk相关命令，在系统中通过sdkman安装某candidate，它的安装主要依赖sdkman-install.sh（看上图）来实现的，依次下载了candidate的zip压缩包及安装脚本，再通过脚本来执行安装流程，本质上是与正常的unix安装流程是一样的。下载的组件分别至于archive及temp目录下，安装的组件在candidates目录下，可以看到默认的current为指向某一版本的软链接</p>
-<p><img src="WX20181020-123559@2x.png"></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">drwxr-xr-x  <span class="token number">11</span> ishiv  staff   352B <span class="token number">10</span> <span class="token number">20</span> <span class="token number">12</span>:33 <span class="token number">10.0</span>.2-oracle
-lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    42B <span class="token number">10</span> <span class="token number">20</span> 03:34 current -<span class="token operator">&gt;</span> /Users/ishiv/.sdkman/candidates/java/java8
-lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class="token number">10</span> <span class="token number">20</span> 03:19 java8 -<span class="token operator">&gt;</span> /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-<p>查看``.bash_profile<code>文件，</code>cat ~/.bash_profile `，可以看到追加了一些脚本</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/usr/local/mysql/bin
-<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span>:/Users/ishiv/software/apache-maven-3.5.4/bin
-
-<span class="token comment">#下面这一段是由于安装sdkman后自动追加的</span>
-<span class="token comment">#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!</span>
-<span class="token builtin class-name">export</span> <span class="token assign-left variable">SDKMAN_DIR</span><span class="token operator">=</span><span class="token string">"/Users/ishiv/.sdkman"</span>
-<span class="token punctuation">[</span><span class="token punctuation">[</span> -s <span class="token string">"/Users/ishiv/.sdkman/bin/sdkman-init.sh"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">source</span> <span class="token string">"/Users/ishiv/.sdkman/bin/sdkman-init.sh"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>每次启动shell环境，都会预先加载 .bash_profile 等文件中的环境，这样就可以直接使用~/.sdkman中的sdk环境了。</p>
+<p>按快捷键<code>Command + ,</code>打开设置，如下图，然后在右侧点击”+”把<code>*.properties</code>加上。</p>
+<p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210318230605804.png" alt="image-20210318230605804"></p>
+<p>然后重启idea，一切OK了，效果如下：</p>
+<p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210318231203244.png" alt="image-20210318231203244"></p>
+<p>原因猜测：</p>
+<p>由于<code>IDE</code>是通过读取配置信息的元数据而实现自动提示的，而元数据在目录<code>META-INF</code>中的<code>spring-configuration-metadata.json</code> 或者 <code>additional-spring-configuration-metadata.json</code>中。但是更新后，由于<code>*.properties</code>默认没有被文件类型加上，导致读取出现了问题！</p>
 
                 
             </div>
@@ -687,7 +533,7 @@ lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://wvht2y.coding-pages.com/2019/05/13/sdkman-ruan-jian-kai-fa-gong-ju-guan-li-qi/">http://wvht2y.coding-pages.com/2019/05/13/sdkman-ruan-jian-kai-fa-gong-ju-guan-li-qi/</a>
+                    <a href="http://wvht2y.coding-pages.com/2021/03/18/mac-geng-xin-idea-dao-2020-3-x-hou-springboot-pei-zhi-wen-jian-bu-zhi-chi-ti-shi-liao/">http://wvht2y.coding-pages.com/2021/03/18/mac-geng-xin-idea-dao-2020-3-x-hou-springboot-pei-zhi-wen-jian-bu-zhi-chi-ti-shi-liao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -725,8 +571,8 @@ lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SDKMAN/">
-                                    <span class="chip bg-color">SDKMAN</span>
+                                <a href="/tags/idea/">
+                                    <span class="chip bg-color">idea</span>
                                 </a>
                             
                         </div>
@@ -897,7 +743,7 @@ lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class
         repo: 'justsme.github.io',
         owner: 'justsme',
         admin: ["justsme"],
-        id: '2019-05-13T23-29-06',
+        id: '2021-03-18T23-16-16',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -923,74 +769,18 @@ lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/05/13/geng-hao-de-diao-shi-java-stream/">
+                <a href="/2021/03/18/mac-geng-xin-idea-dao-2020-3-x-hou-springboot-pei-zhi-wen-jian-bu-zhi-chi-ti-shi-liao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="更好的调试 Java Stream">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="mac更新idea到2020.3.x后，springboot配置文件不支持提示了">
                         
-                        <span class="card-title">更好的调试 Java Stream</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-05-13
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/idea/" class="post-category">
-                                    idea
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/java8/">
-                        <span class="chip bg-color">java8</span>
-                    </a>
-                    
-                    <a href="/tags/idea/">
-                        <span class="chip bg-color">idea</span>
-                    </a>
-                    
-                    <a href="/tags/java-stream/">
-                        <span class="chip bg-color">java stream</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/05/08/cloud-toolkit-gao-xiao-kai-fa-ce-shi-zhen-duan-bing-bu-shu-ying-yong-cha-jian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Cloud Toolkit——高效开发、测试、诊断并部署应用插件">
-                        
-                        <span class="card-title">Cloud Toolkit——高效开发、测试、诊断并部署应用插件</span>
+                        <span class="card-title">mac更新idea到2020.3.x后，springboot配置文件不支持提示了</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1001,7 +791,7 @@ lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-18
                             </span>
                         <span class="publish-author">
                             
@@ -1015,11 +805,61 @@ lrwxr-xr-x   <span class="token number">1</span> ishiv  staff    64B <span class
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%8F%92%E4%BB%B6/">
-                        <span class="chip bg-color">插件</span>
+                    <a href="/tags/idea/">
+                        <span class="chip bg-color">idea</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/03/15/shen-ru-li-jie-java-xu-ni-ji-di-qi-zhang-bi-ji/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="深入理解java虚拟机——第七章笔记">
+                        
+                        <span class="card-title">深入理解java虚拟机——第七章笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-03-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="post-category">
+                                    虚拟机
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                        <span class="chip bg-color">虚拟机</span>
                     </a>
                     
                 </div>

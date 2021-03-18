@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>mac更新idea到2020.3.x后，springboot配置文件不支持提示了</title>
+      <link href="2021/03/18/mac-geng-xin-idea-dao-2020-3-x-hou-springboot-pei-zhi-wen-jian-bu-zhi-chi-ti-shi-liao/"/>
+      <url>2021/03/18/mac-geng-xin-idea-dao-2020-3-x-hou-springboot-pei-zhi-wen-jian-bu-zhi-chi-ti-shi-liao/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>mac更新idea到新的版本后，发现springboot配置文件不支持提示了，并不是什么springboot插件没装等等。这里记录一下解决方法。</p></blockquote><p>按快捷键<code>Command + ,</code>打开设置，如下图，然后在右侧点击”+”把<code>*.properties</code>加上。</p><p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210318230605804.png" alt="image-20210318230605804"></p><p>然后重启idea，一切OK了，效果如下：</p><p><img src="https://gitee.com/shiv/md-images/raw/master/blog/image-20210318231203244.png" alt="image-20210318231203244"></p><p>原因猜测：</p><p>由于<code>IDE</code>是通过读取配置信息的元数据而实现自动提示的，而元数据在目录<code>META-INF</code>中的<code>spring-configuration-metadata.json</code> 或者 <code>additional-spring-configuration-metadata.json</code>中。但是更新后，由于<code>*.properties</code>默认没有被文件类型加上，导致读取出现了问题！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> idea </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> idea </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>深入理解java虚拟机——第七章笔记</title>
       <link href="2021/03/15/shen-ru-li-jie-java-xu-ni-ji-di-qi-zhang-bi-ji/"/>
       <url>2021/03/15/shen-ru-li-jie-java-xu-ni-ji-di-qi-zhang-bi-ji/</url>
