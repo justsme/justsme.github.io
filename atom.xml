@@ -6,7 +6,7 @@
   <link href="http://wvht2y.coding-pages.com/atom.xml" rel="self"/>
   
   <link href="http://wvht2y.coding-pages.com/"/>
-  <updated>2021-03-18T15:18:13.728Z</updated>
+  <updated>2021-04-17T13:24:47.407Z</updated>
   <id>http://wvht2y.coding-pages.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>java实现html转pdf</title>
+    <link href="http://wvht2y.coding-pages.com/2021/04/17/java-shi-xian-html-zhuan-pdf/"/>
+    <id>http://wvht2y.coding-pages.com/2021/04/17/java-shi-xian-html-zhuan-pdf/</id>
+    <published>2021-04-17T13:20:54.000Z</published>
+    <updated>2021-04-17T13:24:47.407Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;关于生成pdf，有专门的工具比如&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="openhtmltopdf" scheme="http://wvht2y.coding-pages.com/categories/openhtmltopdf/"/>
+    
+    
+    <category term="openhtmltopdf" scheme="http://wvht2y.coding-pages.com/tags/openhtmltopdf/"/>
+    
+  </entry>
   
   <entry>
     <title>mac更新idea到2020.3.x后，springboot配置文件不支持提示了</title>
@@ -542,34 +568,6 @@
         
         
     <summary type="html">&lt;p&gt;回到&lt;a href=&quot;/2020/02/26/springmvc-yuan-ma-fen-xi-5.1-handlermethodargumentresolver/&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/categories/SpringMvc/"/>
-    
-    
-    <category term="SpringMvc" scheme="http://wvht2y.coding-pages.com/tags/SpringMvc/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringMvc源码分析5.2——HandlerMethodArgumentResolver</title>
-    <link href="http://wvht2y.coding-pages.com/2020/02/27/springmvc-yuan-ma-fen-xi-5-2-handlermethodargumentresolver/"/>
-    <id>http://wvht2y.coding-pages.com/2020/02/27/springmvc-yuan-ma-fen-xi-5-2-handlermethodargumentresolver/</id>
-    <published>2020-02-27T09:27:17.000Z</published>
-    <updated>2020-02-27T13:43:20.107Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;接着上一篇，我们来探究一下&lt;code&gt;RequestResponseBodyMethodProcessor&lt;/code&gt;。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&quot;一-类实现图&quot;&gt;&lt;a href=&quot;#一-类实现图&quot;</summary>
         
       
     
